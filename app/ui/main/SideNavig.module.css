@@ -1,0 +1,48 @@
+/* SideMenu Styles */
+.sideMenu {
+    grid-area: sidemenu;
+    width: 250px;
+    background-color: #f4f4f4;
+  }
+  
+  .menuList {
+    margin-top: 12px;
+    list-style: none;
+    padding: 0px 0px;
+    border-radius: 2px;
+  }
+  
+  .menuList li {
+    width: 100%;
+    padding: 4px 0px 8px 30px;
+    color: #391F5B;
+    font-size: 17px;
+    position: relative;
+  }
+
+  .borderBetween {
+    position: absolute;
+    width: 60%;
+    height: 1px;
+    margin: 0 auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to right, #f4f4f4 0%, 28%, #391F5B 50%, 72%, #f4f4f4 100%);
+    border: none;
+  } 
+
+  /*.borderBetween { 
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 3px solid #391F5B;
+  }*/
+
+  .menuList li:last-child hr {
+    display: none;
+  }

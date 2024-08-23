@@ -1,0 +1,119 @@
+/* Header Styles */
+.header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #c5c5c5;
+    color: white;
+  }
+  
+  .logo {
+    margin-left: 10px;
+    width: 98.52px;
+    height: 80px;
+  }
+  
+  .pageName {
+    font-size: 24px;
+    margin-left: 15px;
+    color: #391F5B;
+  }
+  
+  .searchContainer {
+    display: flex;
+    align-items: center;
+    margin: 0 30px;
+    flex: 1 1 auto;
+  }
+  
+  .searchInput {
+    margin-left: 5px;
+    flex: 1 1 auto;
+    padding: 7px;
+    padding-left: 43px;
+    border-radius: 6px;
+    font-size: 16px;
+    background: #fbfbfb;
+    border: 2px solid transparent;
+    height: 36px;
+    box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
+    outline: none;
+  }
+  
+  .searchInput:focus {
+    
+  }
+
+  .searchInput::placeholder {
+    color: #999999;
+    opacity: 0.75;
+  }
+  
+  .searchInput::-ms-input-placeholder { /* Edge 12 -18 */
+    color: #999999;
+  }
+  
+  .roundedButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: initial;
+    background-image: linear-gradient(rgba(179, 132, 201, .84), rgba(57, 31, 91, .84) 50%);
+    border-radius: 30px;
+    border-width: 0;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: .04em;
+    margin: 0;
+    padding: 10px 24px;
+    text-shadow: rgba(255, 255, 255, 0.4) 0 0 4px,rgba(255, 255, 255, 0.2) 0 0 12px,rgba(57, 31, 91, 0.6) 1px 1px 4px,rgba(57, 31, 91, 0.32) 4px 4px 16px;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  .loginButton {
+    composes: roundedButton;
+    margin-left: auto;
+    width: 110px;
+  }
+  
+  .shoppingCartButton {
+    composes: roundedButton;
+    margin-left: 15px;
+    width: 58px;
+  }
+  
+  .loginButton:hover,
+  .shoppingCartButton:hover {
+    background-image: linear-gradient(#B384C9, #391F5B 50%);
+  }
+  
+  @media (min-width: 768px) {
+    .loginButton,
+    .shoppingCartButton {
+      font-size: 17px;
+      padding: 11px 16px;
+    }
+  }
+  
+  .icon {
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .userCircleIcon {
+    composes: icon;
+    margin-right: 10px;
+  }
+
+  .searchIcon {
+    composes: icon;
+    position: absolute;
+    color: grey;
+    margin-left: 15px;
+  }

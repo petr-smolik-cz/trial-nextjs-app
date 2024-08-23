@@ -1,23 +1,14 @@
 "use client";
 import styles from "./page.module.css";
-import { useAllProducts } from '@/app/lib/data';
+import { useCategoryProducts } from '@/app/lib/data';
 import { Product } from '@/app/lib/definitions';
 import ProductCart from '@/app/ui/main/ProductCart';
-import { ProductSkeleton } from '@/app/ui/skeletons';
 
-export default function Page() {
-  const { products, isLoading, isError } = useAllProducts();
+export default function Page({ params }: { params: { category: string } }) {
+  const category = params.category;
+  const { products, isLoading, isError } = useCategoryProducts(category);
   if (isError) return <div>failed to load</div>
-  if (isLoading) return (
-    <main className={styles.mainContent}>
-        <div className={styles.cartContainer}>
-        {[...Array(12)].map((x, i) =>
-          <ProductSkeleton key={i + 1}/>
-        )}      
-        </div>
-    </main>
-  )
-   
+  if (isLoading) return <div>loading...</div>
   return (
     <main className={styles.mainContent}>
         <div className={styles.cartContainer}>

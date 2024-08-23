@@ -1,0 +1,36 @@
+"use client";
+import styles from "./sidenavig.module.css";
+import { useProductCategories } from '@/app/lib/data';
+import Link from 'next/link';
+
+export default function SideNav() {
+    const { categories, isLoading, isError } = useProductCategories();
+    if (isError) return <div>failed to load</div>
+    if (isLoading) return <div>loading...</div>
+    return (
+        <nav className={styles.sideMenu}>
+            <ul className={styles.menuList}>
+                {categories.map((category: string, index: number) => (
+                    <li key={index}>
+                        <Link href={`/${category}`}>{ capitalizeWords(category) }</Link>
+                        <hr className={styles.borderBetween}/>
+                    </li>       
+                ))}
+            </ul>
+        </nav>
+  );
+}
+
+function capitalizeWords(input: string): string {
+    // Replace hyphens with spaces and split the string into words
+    const words = input.replace(/-/g, ' ').split(' ');
+
+    // Capitalize the first letter of each word
+    const capitalizedWords = words.map(word => {
+        // Capitalize the first letter and concatenate with the rest of the word
+        return word.charAt(0).toUpperCase() + word.slice(1);
+    });
+
+    // Join the capitalized words back into a string and return
+    return capitalizedWords.join(' ');
+}

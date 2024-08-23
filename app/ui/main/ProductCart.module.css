@@ -1,0 +1,114 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.product:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.productImgContainer {
+  height: 250px; 
+  width: 250px; 
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productImg {
+  margin: 0 auto;
+  border-radius: 5px;
+  width: auto;
+  height: 250px;
+}
+
+.productInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.productName {
+  font-size: 18px;
+  margin: 0 25px 5px 25px;
+  text-align: center;
+  height: 50px;
+  overflow: hidden;
+}
+
+.productPrice {
+  font-size: 23px;
+  color: #391F5B;
+  font-weight: 500;
+}
+
+.productStock {
+  font-size: 16px;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  margin: 5px auto;
+}
+
+.productRating {
+  margin-left: 5px;
+}
+
+.priceContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto 8px 2px 8px;
+}
+
+.toShoppingCartButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: initial;
+  background-image: linear-gradient(rgba(179, 132, 201, .84), rgba(57, 31, 91, .84) 50%);
+  border-radius: 10px;
+  border-width: 0;
+  box-shadow: rgba(57, 31, 91, 0.24) 0 2px 2px,rgba(179, 132, 201, 0.4) 0 6px 10px;
+  color: #FFFFFF;
+  cursor: pointer;
+  width: 125px;
+  font-size: 15px;
+  padding: 11px 9px;
+  font-weight: 400;
+  letter-spacing: .04em;
+  margin: 0;
+  text-shadow: rgba(255, 255, 255, 0.4) 0 0 4px,rgba(255, 255, 255, 0.2) 0 0 12px,rgba(57, 31, 91, 0.6) 1px 1px 4px,rgba(57, 31, 91, 0.32) 4px 4px 16px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.toShoppingCartButton:hover {
+  background-image: linear-gradient(#B384C9, #391F5B 50%);
+}
+
+@media (min-width: 768px) {
+  .toShoppingCartButton {
+    width: 125px;
+    font-size: 15px;
+    padding: 11px 9px;
+  }
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+}
