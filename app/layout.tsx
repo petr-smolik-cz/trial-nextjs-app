@@ -23,7 +23,7 @@ export default function RootLayout({
           <SideNav />
           {children}
           <footer className={styles.footer}>
-            <p>&copy; 2023 Example Company | <a href="#">About</a></p>
+            <p><span>&copy;</span>&nbsp;2024 YourShop |&nbsp;<a href="#">About</a></p>
           </footer>
         </div>  
       </body>

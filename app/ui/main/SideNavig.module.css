@@ -2,7 +2,7 @@
 .sideMenu {
     grid-area: sidemenu;
     width: 250px;
-    background-color: #f4f4f4;
+    background-color: transparent;
   }
   
   .menuList {
@@ -28,20 +28,9 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to right, #f4f4f4 0%, 28%, #391F5B 50%, 72%, #f4f4f4 100%);
+    background: linear-gradient(to right, transparent 0%, 28%, #391F5B 50%, 72%, transparent 100%);
     border: none;
   } 
-
-  /*.borderBetween { 
-    position: absolute;
-    width: 60%;
-    height: 100%;
-    margin: 0 auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    border-bottom: 3px solid #391F5B;
-  }*/
 
   .menuList li:last-child hr {
     display: none;

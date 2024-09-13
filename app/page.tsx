@@ -5,7 +5,7 @@ import { Product } from '@/app/lib/definitions';
 import ProductCart from '@/app/ui/main/ProductCart';
 import { ProductSkeleton } from '@/app/ui/skeletons';
 
-export default function Page() {
+export default function Page() { 
   const { products, isLoading, isError } = useAllProducts();
   if (isError) return <div>failed to load</div>
   if (isLoading) return (
@@ -17,7 +17,7 @@ export default function Page() {
         </div>
     </main>
   )
-   
+  
   return (
     <main className={styles.mainContent}>
         <div className={styles.cartContainer}>

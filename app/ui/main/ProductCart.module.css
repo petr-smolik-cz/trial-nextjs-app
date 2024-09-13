@@ -5,10 +5,11 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: transparent;
 }
 
 .product:hover {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 8px;
 }
 
 .productImgContainer {

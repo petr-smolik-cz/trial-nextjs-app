@@ -1,10 +1,10 @@
 /* Header Styles */
-.header {
+  .header {
     grid-area: header;
     display: flex;
     align-items: center;
     padding: 20px;
-    background-color: #c5c5c5;
+    background-color: transparent;
     color: white;
   }
   
@@ -32,17 +32,18 @@
     flex: 1 1 auto;
     padding: 7px;
     padding-left: 43px;
-    border-radius: 6px;
+    border-radius: 20px;
     font-size: 16px;
     background: #fbfbfb;
-    border: 2px solid transparent;
-    height: 36px;
-    box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
+    border: none;
+    height: 40px;
+    max-width: 700px;
     outline: none;
   }
   
   .searchInput:focus {
-    
+    /*box-shadow: 1px 1px 6px 1px #d4d4d4 inset;*/
+    border: 1px solid #391F5B;
   }
 
   .searchInput::placeholder {
@@ -52,6 +53,7 @@
   
   .searchInput::-ms-input-placeholder { /* Edge 12 -18 */
     color: #999999;
+    opacity: 0.75;
   }
   
   .roundedButton {
@@ -77,12 +79,13 @@
   .loginButton {
     composes: roundedButton;
     margin-left: auto;
-    width: 110px;
+    width: 116px;
   }
   
   .shoppingCartButton {
     composes: roundedButton;
     margin-left: 15px;
+    margin-right: 20px;
     width: 58px;
   }
   
@@ -114,6 +117,6 @@
   .searchIcon {
     composes: icon;
     position: absolute;
-    color: grey;
+    color: #391F5B;
     margin-left: 15px;
   }

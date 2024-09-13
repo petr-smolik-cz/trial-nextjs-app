@@ -34,11 +34,11 @@ export default function Header() {
                  defaultValue={searchParams.get('query')?.toString()} />
             </div>
             <button className={styles.loginButton}>
-                <UserCircleIcon className={styles.userCircleIcon} /> {/* Replaced icon with UserCircleIcon */}
-                <span>Login</span>
+                <UserCircleIcon className={styles.userCircleIcon} />
+                <span>Log in</span>
             </button>
             <button className={styles.shoppingCartButton}>
-                <ShoppingCartIcon className={styles.icon} /> {/* Replaced icon with ShoppingCartIcon */}
+                <ShoppingCartIcon className={styles.icon} />
             </button>
         </header>
   );
