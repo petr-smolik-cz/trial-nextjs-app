@@ -8,15 +8,19 @@
     color: white;
   }
   
+  .logoTitleContainer {
+    display: flex;
+    align-items: center;
+  }
+
   .logo {
     margin-left: 10px;
-    width: 98.52px;
-    height: 80px;
+    width: 72px;
+    height: 72px;
   }
   
   .pageName {
     font-size: 24px;
-    margin-left: 15px;
     color: #391F5B;
   }
   
@@ -57,61 +61,56 @@
   }
   
   .roundedButton {
+    height: 50px;
+    width: 50px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background-color: initial;
-    background-image: linear-gradient(rgba(179, 132, 201, .84), rgba(57, 31, 91, .84) 50%);
-    border-radius: 30px;
-    border-width: 0;
-    color: #FFFFFF;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 1px solid #B384C9;
+    color: #B384C9;
     cursor: pointer;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: .04em;
     margin: 0;
-    padding: 10px 24px;
-    text-shadow: rgba(255, 255, 255, 0.4) 0 0 4px,rgba(255, 255, 255, 0.2) 0 0 12px,rgba(57, 31, 91, 0.6) 1px 1px 4px,rgba(57, 31, 91, 0.32) 4px 4px 16px;
+    padding: 5px;
     user-select: none;
     -webkit-user-select: none;
   }
   
-  .loginButton {
+  .shoppingCartButton {
     composes: roundedButton;
     margin-left: auto;
-    width: 116px;
   }
   
-  .shoppingCartButton {
+  .loginButton {
     composes: roundedButton;
     margin-left: 15px;
     margin-right: 20px;
-    width: 58px;
   }
   
   .loginButton:hover,
   .shoppingCartButton:hover {
-    background-image: linear-gradient(#B384C9, #391F5B 50%);
+    /*background-image: linear-gradient(#B384C9, #391F5B 50%);*/
+    color: #391f5b;
+    border-color: #391f5b;
   }
   
   @media (min-width: 768px) {
     .loginButton,
     .shoppingCartButton {
-      font-size: 17px;
-      padding: 11px 16px;
+
     }
   }
   
   .icon {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     margin: 0;
     padding: 0;
   }
   
-  .userCircleIcon {
+  .userIcon {
     composes: icon;
-    margin-right: 10px;
   }
 
   .searchIcon {

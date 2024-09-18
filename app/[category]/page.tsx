@@ -12,10 +12,10 @@ export default function Page({
   params: { category: string };
   searchParams?: { query?: string };
 }) {
-  /*const category = params.category;
-  const query = searchParams?.query || '';*/
-  const category = "";
-  const query = "";
+  const category = params.category;
+  const query = searchParams?.query || '';
+  /*const category = "";
+  const query = "";*/
   const { products, isLoading, isError } = useFiltredProducts(category, query);
   if (isError) return <div>failed to load</div>
   if (isLoading) return (

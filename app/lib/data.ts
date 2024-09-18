@@ -28,9 +28,13 @@ export function useAllProducts() {
 }*/
 
 export function useProductCategories() {
-  const { data, error, isLoading } = useSWR('https://dummyjson.com/products/category-list', fetcher);
- 
+  const { data, error: errorConst, isLoading } = useSWR('https://dummyjson.com/products/category-list', fetcher);
+  var error = errorConst;
   console.log(data);
+
+  if (!data && !isLoading) {
+    error = true;
+  }
 
   return {
     categories: data,
@@ -60,7 +64,7 @@ function useFetcher(url: string) {
         thumbnail: product.thumbnail,
         images: product.images,
       }));
-    } else {
+    } else if (!isLoading) {
       error = true;
     }
 

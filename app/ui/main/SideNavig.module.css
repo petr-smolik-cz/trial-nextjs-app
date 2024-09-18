@@ -1,5 +1,5 @@
 /* SideMenu Styles */
-.sideMenu {
+  .sideMenu {
     grid-area: sidemenu;
     width: 250px;
     background-color: transparent;

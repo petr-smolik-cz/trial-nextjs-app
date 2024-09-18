@@ -2,11 +2,13 @@
 import styles from "./sidenavig.module.css";
 import { useProductCategories } from '@/app/lib/data';
 import Link from 'next/link';
+import { SideNavigSkeleton } from '@/app/ui/skeletons';
 
 export default function SideNav() {
     const { categories, isLoading, isError } = useProductCategories();
     if (isError) return <div>failed to load</div>
-    if (isLoading) return <div>loading...</div>
+    if (isLoading) return <SideNavigSkeleton />       
+
     return (
         <nav className={styles.sideMenu}>
             <ul className={styles.menuList}>

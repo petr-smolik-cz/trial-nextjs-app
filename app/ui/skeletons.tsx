@@ -24,3 +24,19 @@ export function ProductSkeleton() {
     </div>
   );
 }
+
+export function SideNavigSkeleton() {
+  return (
+    <nav className={styles.sideMenu}>
+      <ul className={styles.menuList}>
+        {/* Skeleton loading placeholders */}
+        {Array.from({ length: 20 }).map((_, index) => (
+          <li key={index}>
+            <div className={`${styles.skeleton} ${styles.skeletonText}`}></div>
+            <hr className={styles.skeletonBorderBetween} />
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+ }
