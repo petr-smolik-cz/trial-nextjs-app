@@ -33,7 +33,7 @@ export function SideNavigSkeleton() {
         {Array.from({ length: 20 }).map((_, index) => (
           <li key={index}>
             <div className={`${styles.skeleton} ${styles.skeletonText}`}></div>
-            <hr className={styles.skeletonBorderBetween} />
+            <hr className={`${styles.skeleton} ${styles.skeletonBorderBetween}`} />
           </li>
         ))}
       </ul>

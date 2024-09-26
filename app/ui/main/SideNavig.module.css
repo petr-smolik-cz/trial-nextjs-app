@@ -7,29 +7,42 @@
   
   .menuList {
     margin-top: 12px;
+    margin-left: 35px;
     list-style: none;
     padding: 0px 0px;
     border-radius: 2px;
   }
-  
+
   .menuList li {
     width: 100%;
-    padding: 4px 0px 8px 30px;
     color: #391F5B;
     font-size: 17px;
-    position: relative;
+    padding: 0px 0px;
+  }
+
+  .menuList li:hover {
+    background: linear-gradient(to right, transparent 15%, #d9e3e3, transparent 85%);
+  }
+
+  .link {
+    display: block;
+    width: 88%;
+    height: 27px;
+    display: flex;
+    align-items: center;
+  }
+
+  .activeLink {
+    font-weight: bold;
+    color: black;
   }
 
   .borderBetween {
-    position: absolute;
-    width: 60%;
-    height: 1px;
-    margin: 0 auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to right, transparent 0%, 28%, #391F5B 50%, 72%, transparent 100%);
-    border: none;
+    width: 80%;
+    margin: 0px auto;
+    border-image: linear-gradient(to right, transparent 0%, 28%, #391F5B 50%, 72%, transparent 100%) 1;
+    border-style: thin;
+    border-style: solid;
   } 
 
   .menuList li:last-child hr {

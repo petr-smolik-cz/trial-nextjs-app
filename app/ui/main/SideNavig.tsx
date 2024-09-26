@@ -3,18 +3,23 @@ import styles from "./sidenavig.module.css";
 import { useProductCategories } from '@/app/lib/data';
 import Link from 'next/link';
 import { SideNavigSkeleton } from '@/app/ui/skeletons';
+import { usePathname } from 'next/navigation';
 
 export default function SideNav() {
+    const pathname = usePathname();
     const { categories, isLoading, isError } = useProductCategories();
     if (isError) return <div>failed to load</div>
     if (isLoading) return <SideNavigSkeleton />       
-
+    
     return (
         <nav className={styles.sideMenu}>
             <ul className={styles.menuList}>
                 {categories.map((category: string, index: number) => (
-                    <li key={index}>
-                        <Link href={`/${category}`}>{ capitalizeWords(category) }</Link>
+                    <li key={index}>                      
+                        <Link href={`/${category}`}
+                            className={pathname === `/${category}` ? `${styles.link} ${styles.activeLink}` : styles.link}>
+                            { capitalizeWords(category) }
+                        </Link>
                         <hr className={styles.borderBetween}/>
                     </li>       
                 ))}

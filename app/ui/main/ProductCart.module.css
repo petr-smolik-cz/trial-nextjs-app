@@ -6,6 +6,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .product:hover {
@@ -42,18 +43,21 @@
   text-align: center;
   height: 50px;
   overflow: hidden;
+  cursor: text;
 }
 
 .productPrice {
   font-size: 23px;
-  color: #391F5B;
+  /*color: #391F5B;*/
   font-weight: 500;
+  cursor: text;
 }
 
 .productStock {
   font-size: 16px;
   margin-bottom: 18px;
   text-align: center;
+  cursor: text;
 }
 
 .ratingContainer {
@@ -64,6 +68,7 @@
 
 .productRating {
   margin-left: 5px;
+  cursor: text;
 }
 
 .priceContainer {
@@ -78,7 +83,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: initial;
-  background-image: linear-gradient(rgba(179, 132, 201, .84), rgba(57, 31, 91, .84) 50%);
+  background-image: linear-gradient(#B384C9, #391F5B 50%);
   border-radius: 10px;
   border-width: 0;
   box-shadow: rgba(57, 31, 91, 0.24) 0 2px 2px,rgba(179, 132, 201, 0.4) 0 6px 10px;
@@ -96,7 +101,7 @@
 }
 
 .toShoppingCartButton:hover {
-  background-image: linear-gradient(#B384C9, #391F5B 50%);
+  background-image: linear-gradient(#bd8cd4, #4e2c7a 50%);
 }
 
 @media (min-width: 768px) {

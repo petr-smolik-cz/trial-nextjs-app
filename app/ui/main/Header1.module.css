@@ -34,7 +34,6 @@
   .searchInput {
     margin-left: 5px;
     flex: 1 1 auto;
-    padding: 7px;
     padding-left: 43px;
     border-radius: 20px;
     font-size: 16px;
@@ -43,6 +42,7 @@
     height: 40px;
     max-width: 700px;
     outline: none;
+    line-height: 40px;
   }
   
   .searchInput:focus {
@@ -60,6 +60,12 @@
     opacity: 0.75;
   }
   
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    .searchInput {
+      padding-top: 3px;
+    }
+  }
+
   .roundedButton {
     height: 50px;
     width: 50px;
@@ -68,8 +74,8 @@
     justify-content: center;
     background-color: transparent;
     border-radius: 50%;
-    border: 1px solid #B384C9;
-    color: #B384C9;
+    border: 1px solid #391F5B;
+    color: #391F5B;
     cursor: pointer;
     margin: 0;
     padding: 5px;
@@ -91,8 +97,8 @@
   .loginButton:hover,
   .shoppingCartButton:hover {
     /*background-image: linear-gradient(#B384C9, #391F5B 50%);*/
-    color: #391f5b;
-    border-color: #391f5b;
+    color: #512787;
+    border-color: #512787;
   }
   
   @media (min-width: 768px) {
