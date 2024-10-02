@@ -19,7 +19,7 @@ export default function ProductCart({ product }: { product: Product }) {
           <h2 className={styles.productName}>{product.title.replace(/-/g, '‑')}</h2>                   
           <p className={styles.productStock}>Stock: {product.stock}</p>
           <div className={styles.priceContainer}>
-            <p className={styles.productPrice}>{ formatNumber(product.price) }$</p>
+            <p className={styles.productPrice}>${ formatNumber(product.price) }</p>
             <button className={styles.toShoppingCartButton}>
               <ShoppingCartIcon className={styles.icon} /> 
               <span>Add to cart</span>
@@ -32,6 +32,6 @@ export default function ProductCart({ product }: { product: Product }) {
 
 function formatNumber(num: number): string {
   var parts = num.toString().split(".");
-  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   return parts.join(".");
 }

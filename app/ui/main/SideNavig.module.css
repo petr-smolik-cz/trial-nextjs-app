@@ -21,7 +21,7 @@
   }
 
   .menuList li:hover {
-    background: linear-gradient(to right, transparent 15%, #d9e3e3, transparent 85%);
+    background: linear-gradient(to right, transparent 15%, #DCE5E5  , transparent 85%);
   }
 
   .link {
@@ -41,7 +41,7 @@
     width: 80%;
     margin: 0px auto;
     border-image: linear-gradient(to right, transparent 0%, 28%, #391F5B 50%, 72%, transparent 100%) 1;
-    border-style: thin;
+    border-width: thin;
     border-style: solid;
   } 
 

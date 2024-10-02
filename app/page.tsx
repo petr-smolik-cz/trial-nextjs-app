@@ -4,6 +4,7 @@ import { useAllProducts } from '@/app/lib/data';
 import { Product } from '@/app/lib/definitions';
 import ProductCart from '@/app/ui/main/ProductCart';
 import { ProductSkeleton } from '@/app/ui/skeletons';
+import Link from 'next/link';
 
 export default function Page() { 
   const { products, isLoading, isError } = useAllProducts();
@@ -22,7 +23,9 @@ export default function Page() {
     <main className={styles.mainContent}>
         <div className={styles.cartContainer}>
           {products.map((product: Product, index: number) => (
-            <ProductCart key={index} product={product} />
+            <Link key={product.id} href={`/product/${product.title}`}>
+              <ProductCart key={index} product={product} />
+            </Link>
           ))}
         </div>
     </main>
