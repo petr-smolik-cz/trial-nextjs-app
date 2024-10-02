@@ -21,7 +21,9 @@ export default function RootLayout({
         <div className={styles.container}>
           <Header />
           <SideNav />
-          {children}
+          <main className={styles.mainContent}>
+            {children}
+          </main>      
           <footer className={styles.footer}>
             <p><span>&copy;</span>&nbsp;2024 YourShop |&nbsp;<a href="#">About</a></p>
           </footer>

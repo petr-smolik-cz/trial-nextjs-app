@@ -1,9 +1,7 @@
 "use client";
-import styles from "./page.module.css";
 import { useFiltredProducts } from '@/app/lib/data';
-import { Product } from '@/app/lib/definitions';
-import ProductCart from '@/app/ui/main/ProductCart';
-import { ProductSkeleton } from '@/app/ui/skeletons';
+import CardWrapper from '@/app/ui/main/CardWrapper';
+import { CardWrapperSkeleton } from '@/app/ui/main/CardWrapper';
 
 export default function Page({
   params,
@@ -18,23 +16,9 @@ export default function Page({
   const query = "";*/
   const { products, isLoading, isError } = useFiltredProducts(category, query);
   if (isError) return <div>failed to load</div>
-  if (isLoading) return (
-    <main className={styles.mainContent}>
-        <div className={styles.cartContainer}>
-        {[...Array(12)].map((x, i) =>
-          <ProductSkeleton key={i + 1}/>
-        )}      
-        </div>
-    </main>
-  )
+  if (isLoading) return <CardWrapperSkeleton />
 
   return (
-    <main className={styles.mainContent}>
-        <div className={styles.cartContainer}>
-          {products.map((product: Product, index: number) => (
-            <ProductCart key={index} product={product} />
-          ))}
-        </div>
-    </main>
+    <CardWrapper products={products}/>
   );
 }

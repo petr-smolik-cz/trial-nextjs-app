@@ -29,3 +29,9 @@
 .footer span {
     font-size: 26px;
 }
+
+/* Main Content Styles */
+.mainContent {
+    grid-area: mainContent;
+    padding: 20px;
+}

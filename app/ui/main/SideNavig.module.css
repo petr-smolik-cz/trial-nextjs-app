@@ -20,9 +20,9 @@
     padding: 0px 0px;
   }
 
-  .menuList li:hover {
-    background: linear-gradient(to right, transparent 15%, #DCE5E5  , transparent 85%);
-  }
+  /*.menuList li:hover {
+      background: linear-gradient(to right, transparent 15%, #DCE5E5  , transparent 85%);   
+  }*/
 
   .link {
     display: block;
@@ -30,10 +30,24 @@
     height: 27px;
     display: flex;
     align-items: center;
+    transition: font-size 0.3s linear;
+  }
+
+  .link:hover {
+    font-size: 18px;
+    font-weight: bold;
   }
 
   .activeLink {
     font-weight: bold;
+    font-size: 19px;
+    color: black;
+    transition: font-size 0.15s linear;
+  }
+
+  .activeLink:hover {
+    font-weight: bold;
+    font-size: 19px;
     color: black;
   }
 
