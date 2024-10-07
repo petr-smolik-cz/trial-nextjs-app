@@ -67,9 +67,11 @@
   }
 
   .roundedButton {
+    position: relative;
     height: 50px;
     width: 50px;
     display: flex;
+    flex: 0 0 auto;
     align-items: center;
     justify-content: center;
     background-color: transparent;
@@ -101,6 +103,40 @@
     border-color: #512787;
   }
   
+  .tooltipText {
+    visibility: hidden;
+    background-color: #512787;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 5px 7px 7px 7px;
+    position: absolute;
+    top: 125%; /* Move tooltip below the button */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1;
+    white-space: nowrap;
+  }
+  
+  .tooltipText::after {
+    content: "";
+    position: absolute;
+    bottom: 100%; /* Arrow above the tooltip */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 7px;
+    border-style: solid;
+    border-color: transparent transparent #512787 transparent;
+  }
+  
+  .shoppingCartButton:hover .tooltipText, 
+  .loginButton:hover .tooltipText {
+    visibility: visible;
+    opacity: 1;
+  }
+
   @media (min-width: 768px) {
     .loginButton,
     .shoppingCartButton {

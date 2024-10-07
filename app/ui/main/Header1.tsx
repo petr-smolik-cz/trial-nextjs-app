@@ -38,9 +38,11 @@ export default function Header() {
             </div>
             <button className={styles.shoppingCartButton}>
                 <ShoppingCartIcon className={styles.icon} />
+                <span className={styles.tooltipText}>Your shopping cart</span>
             </button>
             <button className={styles.loginButton}>
                 <UserIcon className={styles.userIcon} />
+                <span className={styles.tooltipText}>Login</span>
             </button>     
         </header>
   );
