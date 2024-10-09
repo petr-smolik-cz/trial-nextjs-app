@@ -1,6 +1,6 @@
 "use client";
 import useSWR from 'swr';
-import { Product } from '@/app/lib/definitions';
+import { Product, DetailedProduct } from '@/app/lib/definitions';
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
 
@@ -12,11 +12,11 @@ export function useFiltredProducts(category: string, query: string) {
   else {
     urlRequest = `https://dummyjson.com/products/category/${category}`;
   } 
-  return useFetcher(urlRequest);
+  return useProducts(urlRequest);
 }
 
 export function useAllProducts() {
-   return useFetcher('https://dummyjson.com/products')
+   return useProducts('https://dummyjson.com/products')
 }
 
 /*export function useCategoryProducts(category: string) {
@@ -43,7 +43,7 @@ export function useProductCategories() {
   }
 }
 
-function useFetcher(url: string) {
+function useProducts(url: string) {
     const { data, error: errorConst, isLoading } = useSWR(url, fetcher);
     var error = errorConst;
     console.log(data);
@@ -54,23 +54,63 @@ function useFetcher(url: string) {
       products = data.products.map((product: any) => ({      
         id: product.id,
         title: product.title,
-        description: product.description,
         price: product.price,
-        discountPercentage: product.discountPercentage,
         rating: product.rating,
         stock: product.stock,
-        brand: product.brand,
-        category: product.category,
-        thumbnail: product.thumbnail,
-        images: product.images,
+        images: product.images
       }));
     } else if (!isLoading) {
       error = true;
     }
 
     return {
-      products: products,
+      products,
       isLoading,
       isError: error
     }
   }
+
+export function useSingleProduct(id: number) {
+  const { data, error: errorConst, isLoading } = useSWR('https://dummyjson.com/products/' + id, fetcher);
+  var error = errorConst;
+  console.log(data);
+
+  let product: DetailedProduct | null = null;
+
+  if (data && data.product) {
+    const p = data.product;
+
+    product = {
+      id: p.id,
+      title: p.title,
+      description: p.description,
+      category: p.category,
+      price: p.price,
+      rating: p.rating,
+      stock: p.stock,
+      tags: p.tags,
+      brand: p.brand,
+      sku: p.sku,
+      weight: p.weight,
+      dimensions: {
+        width: p.dimensions.width,
+        height: p.dimensions.height,
+        depth: p.dimensions.depth,
+      },
+      warrantyInformation: p.warrantyInformation,
+      shippingInformation: p.shippingInformation,
+      reviews: p.reviews,
+      returnPolicy: p.returnPolicy,
+      thumbnail: p.thumbnail,
+      images: p.images,
+    };
+  } else if (!isLoading) {
+    error = true;
+  }
+
+  return {
+    product,
+    isLoading,
+    isError: error
+  }
+}

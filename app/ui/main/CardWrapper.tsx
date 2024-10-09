@@ -8,7 +8,7 @@ export default function CardWrapper({ products }: { products: Product[] }) {
     return (      
         <div className={styles.cartContainer}>
             {products.map((product: Product, index: number) => (
-                <Link key={product.id} href={`/product/${product.title}`}>
+                <Link key={product.id} href={`/product/${formatLink(product.title)}`}>
                     <ProductCart key={index} product={product} />
                 </Link>
             ))}
@@ -24,4 +24,12 @@ export function CardWrapperSkeleton() {
             )}      
         </div>
     );
+}
+
+function formatLink(link: string): string {
+    return link
+        .toLowerCase()               // Convert to lowercase
+        .replace(/&/g, 'and')        // Replace '&' with 'and'
+        .replace(/\s+/g, '-')        // Replace spaces with hyphens
+        .replace(/[^a-z0-9\-]/g, ''); // Remove non-alphanumeric characters except hyphens
 }
