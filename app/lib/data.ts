@@ -71,14 +71,15 @@ function useProducts(url: string) {
   }
 
 export function useSingleProduct(id: number) {
+  console.log("Trying to fetch product with id: " + id);
   const { data, error: errorConst, isLoading } = useSWR('https://dummyjson.com/products/' + id, fetcher);
   var error = errorConst;
-  console.log(data);
+  console.log("Data of single product:", data);
 
   let product: DetailedProduct | null = null;
 
-  if (data && data.product) {
-    const p = data.product;
+  if (data) {
+    const p = data;
 
     product = {
       id: p.id,
@@ -107,6 +108,8 @@ export function useSingleProduct(id: number) {
   } else if (!isLoading) {
     error = true;
   }
+
+  console.log("Was fetching successful:", !error);
 
   return {
     product,

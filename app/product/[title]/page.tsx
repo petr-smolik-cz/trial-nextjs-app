@@ -6,13 +6,14 @@ import ProductCart from '@/app/ui/main/ProductCart';
 import { ProductSkeleton } from '@/app/ui/skeletons';
 
 export default function Page({
-  params,
+  searchParams,
 }: {
-  params: { id: number };
+  searchParams?: { id?: number };
 }) {
-  const id = params.id;
+  const id = searchParams?.id || -1;
+  console.log("Starting fetching process for product: " + id);
   const { product, isLoading, isError } = useSingleProduct(id);
-  if (isError) return <div>failed to load</div>
+  if (isError || !product) return <div>failed to load</div>
   if (isLoading) return (
     <h1>Loading...</h1>
   )

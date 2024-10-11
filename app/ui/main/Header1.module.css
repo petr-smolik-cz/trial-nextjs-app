@@ -116,6 +116,7 @@
     transform: translateX(-50%);
     opacity: 0;
     transition: opacity 0.3s;
+    transition-delay: 0.3s;
     z-index: 1;
     white-space: nowrap;
   }
