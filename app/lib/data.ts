@@ -102,7 +102,6 @@ export function useSingleProduct(id: number) {
       shippingInformation: p.shippingInformation,
       reviews: p.reviews,
       returnPolicy: p.returnPolicy,
-      thumbnail: p.thumbnail,
       images: p.images,
     };
   } else if (!isLoading) {

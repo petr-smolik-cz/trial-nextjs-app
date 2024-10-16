@@ -1,18 +1,21 @@
 
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-areas:
+        "images   details"
+        "reviews  reviews";
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
     padding: 20px;
   }
   
   .imageSection {
-    flex: 1 1 300px;
+    grid-area: images;
     margin-right: 20px;
   }
   
-  .thumbnail {
-    width: 100%;
+  .bigImage {
+    width: auto;
     border-radius: 8px;
   }
   
@@ -30,7 +33,7 @@
   }
   
   .detailsSection {
-    flex: 2 1 500px;
+    grid-area: details;
   }
   
   .title {
@@ -54,6 +57,7 @@
   }
   
   .reviews {
+    grid-area: reviews;
     margin-top: 30px;
   }
   
@@ -75,19 +79,5 @@
   
   .review .rating {
     color: gold;
-  }
-  
-  .addToCartButton {
-    background-color: #391f5b;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  
-  .addToCartButton:hover {
-    background-color: #26103a;
   }
   

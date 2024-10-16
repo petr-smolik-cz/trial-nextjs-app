@@ -16,7 +16,7 @@ export default function CardWrapper({ products }: { products: Product[] }) {
     );
 }
 
-export function CardWrapperSkeleton() { 
+export function CardWrapperSkeleton() {
     return (      
         <div className={styles.cartContainer}>
             {[...Array(12)].map((x, i) =>

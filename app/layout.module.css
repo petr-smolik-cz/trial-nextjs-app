@@ -15,7 +15,7 @@
 
 /* Footer Styles */
 .footer {
-    grid-area: footer;  
+    grid-area: footer; 
     padding: 20px;
     background-color: transparent;
 }

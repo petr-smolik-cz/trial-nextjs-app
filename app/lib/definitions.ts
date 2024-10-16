@@ -29,7 +29,6 @@
     shippingInformation: string;
     reviews: Review[];  // Array of Review objects
     returnPolicy: string;
-    thumbnail: string;
     images: string[];
   };
 
