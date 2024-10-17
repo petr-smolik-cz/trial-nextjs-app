@@ -7,16 +7,16 @@ const fetcher = (url: string) => fetch(url).then(r => r.json())
 export function useFiltredProducts(category: string, query: string) {
   var urlRequest: string;
   if (query) {
-    urlRequest = `https://dummyjson.com/products/search?q=${query}`;
+    urlRequest = `https://dummyjson.com/products/search?q=${query}?select=id,title,price,rating,stock,images`;
   }
   else {
-    urlRequest = `https://dummyjson.com/products/category/${category}`;
+    urlRequest = `https://dummyjson.com/products/category/${category}?select=id,title,price,rating,stock,images`;
   } 
   return useProducts(urlRequest);
 }
 
 export function useAllProducts() {
-   return useProducts('https://dummyjson.com/products')
+   return useProducts('https://dummyjson.com/products?select=id,title,price,rating,stock,images')
 }
 
 /*export function useCategoryProducts(category: string) {
@@ -72,7 +72,9 @@ function useProducts(url: string) {
 
 export function useSingleProduct(id: number) {
   console.log("Trying to fetch product with id: " + id);
-  const { data, error: errorConst, isLoading } = useSWR('https://dummyjson.com/products/' + id, fetcher);
+  const { data, error: errorConst, isLoading } = useSWR('https://dummyjson.com/products/' + id 
+    + `?select=id,title,description,category,price,rating,stock,tags,brand,sku,weight,dimensions,
+    warrantyInformation,shippingInformation,reviews,returnPolicy,images`, fetcher);
   var error = errorConst;
   console.log("Data of single product:", data);
 

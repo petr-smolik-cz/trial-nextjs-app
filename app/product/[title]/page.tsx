@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import { useSingleProduct } from '@/app/lib/data';
 import AddToCartButton from '@/app/ui/main/AddToCartButton';
 import Image from 'next/image';
-import { ProductSkeleton } from '@/app/ui/skeletons';
+import StarRating from '@/app/ui/main/StarRating';
 
 export default function Page({
   searchParams,
@@ -48,7 +48,7 @@ export default function Page({
         <h2>Customer Reviews</h2>
         {product.reviews.map((review, index) => (
           <div key={index} className={styles.review}>
-            <h4>{review.reviewerName} <span className={styles.rating}>{'★'.repeat(review.rating)}</span></h4>
+            <StarRating rating={review.rating}/>
             <p>{review.comment}</p>
             <p><small>{new Date(review.date).toLocaleDateString()}</small></p>
           </div>

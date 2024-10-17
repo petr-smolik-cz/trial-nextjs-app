@@ -4,7 +4,7 @@
     grid-template-areas:
         "images   details"
         "reviews  reviews";
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr 2fr;
     grid-template-rows: auto auto;
     padding: 20px;
   }
@@ -15,8 +15,10 @@
   }
   
   .bigImage {
+    margin: 0 auto;
+    border-radius: 5px;
     width: auto;
-    border-radius: 8px;
+    height: 250px;
   }
   
   .imageGallery {
