@@ -1,6 +1,7 @@
 "use client";
 import useSWR from 'swr';
 import { Product, DetailedProduct } from '@/app/lib/definitions';
+import sharp from 'sharp';
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
 
@@ -28,7 +29,7 @@ export function useAllProducts() {
 }*/
 
 export function useProductCategories() {
-  const { data, error: errorConst, isLoading } = useSWR('https://dummyjson.com/products/category-list', fetcher);
+  const { data, error: errorConst, isLoading } = useSWR<string[]>('https://dummyjson.com/products/category-list', fetcher);
   var error = errorConst;
   console.log(data);
 
@@ -39,26 +40,53 @@ export function useProductCategories() {
   return {
     categories: data,
     isLoading,
-    isError: error
+    isError: Boolean(error)
   }
 }
 
-function useProducts(url: string) {
-    const { data, error: errorConst, isLoading } = useSWR(url, fetcher);
+type PackedProducts = { products: Product[] };
+
+async function downloadImage(imageUrl: string): Promise<Buffer> {
+  const response = await fetch(imageUrl);
+  const arrayBuffer = await response.arrayBuffer();
+  return Buffer.from(arrayBuffer);
+}
+
+async function resizeImage(imageBuffer: Buffer, width: number, height: number): Promise<Buffer> {
+  return await sharp(imageBuffer).resize(width, height).toBuffer();
+}
+
+async function resizeImages(imageUrls: string[], width: number, height: number): Promise<string[]> {
+  return await Promise.all(
+    imageUrls.map(async (imageUrl: string) => {
+      const imageBuffer = await downloadImage(imageUrl); // Fetch image as Buffer
+      const resizedImageBuffer = await resizeImage(imageBuffer, width, height); // Resize image
+      return resizedImageBuffer.toString('base64'); // Convert buffer to base64 string
+    })
+  );
+}
+
+async function useProducts(url: string) {
+    const { data, error: errorConst, isLoading } = useSWR<PackedProducts>(url, fetcher);
     var error = errorConst;
     console.log(data);
 
     let products: Product[] = [];
 
     if (data && data.products) {
-      products = data.products.map((product: any) => ({      
-        id: product.id,
-        title: product.title,
-        price: product.price,
-        rating: product.rating,
-        stock: product.stock,
-        images: product.images
-      }));
+      products = await Promise.all(
+         data.products.map(async (product: any) => {  
+          const resizedImages = await resizeImages(product.images, 300, 300);
+          return {
+            id: product.id,
+            title: product.title,
+            price: product.price,
+            rating: product.rating,
+            stock: product.stock,
+            images: resizedImages,
+          };
+        })
+      );
     } else if (!isLoading) {
       error = true;
     }
@@ -66,13 +94,13 @@ function useProducts(url: string) {
     return {
       products,
       isLoading,
-      isError: error
+      isError: Boolean(error)
     }
   }
 
 export function useSingleProduct(id: number) {
   console.log("Trying to fetch product with id: " + id);
-  const { data, error: errorConst, isLoading } = useSWR('https://dummyjson.com/products/' + id 
+  const { data, error: errorConst, isLoading } = useSWR<DetailedProduct>('https://dummyjson.com/products/' + id 
     + `?select=id,title,description,category,price,rating,stock,tags,brand,sku,weight,dimensions,
     warrantyInformation,shippingInformation,reviews,returnPolicy,images`, fetcher);
   var error = errorConst;
@@ -115,6 +143,6 @@ export function useSingleProduct(id: number) {
   return {
     product,
     isLoading,
-    isError: error
+    isError: Boolean(error)
   }
 }

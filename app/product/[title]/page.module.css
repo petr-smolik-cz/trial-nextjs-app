@@ -11,14 +11,12 @@
   
   .imageSection {
     grid-area: images;
-    margin-right: 20px;
   }
   
   .bigImage {
-    margin: 0 auto;
     border-radius: 5px;
     width: auto;
-    height: 250px;
+    height: 512px;
   }
   
   .imageGallery {
