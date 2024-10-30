@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 export default function SideNav() {
     const pathname = usePathname();
     const { categories, isLoading, isError } = useProductCategories();
-    if (isError) return <div>failed to load</div>
+    if (isError || categories === undefined) return <div>failed to load</div>
     if (isLoading) return <SideNavigSkeleton />       
     
     return (

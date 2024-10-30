@@ -1,7 +1,7 @@
 "use client";
 import useSWR from 'swr';
 import { Product, DetailedProduct } from '@/app/lib/definitions';
-import sharp from 'sharp';
+//import sharp from 'sharp';
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
 
@@ -52,7 +52,7 @@ async function downloadImage(imageUrl: string): Promise<Buffer> {
   return Buffer.from(arrayBuffer);
 }
 
-async function resizeImage(imageBuffer: Buffer, width: number, height: number): Promise<Buffer> {
+/*async function resizeImage(imageBuffer: Buffer, width: number, height: number): Promise<Buffer> {
   return await sharp(imageBuffer).resize(width, height).toBuffer();
 }
 
@@ -64,9 +64,9 @@ async function resizeImages(imageUrls: string[], width: number, height: number):
       return resizedImageBuffer.toString('base64'); // Convert buffer to base64 string
     })
   );
-}
+}*/
 
-async function useProducts(url: string) {
+function useProducts(url: string) {
     const { data, error: errorConst, isLoading } = useSWR<PackedProducts>(url, fetcher);
     var error = errorConst;
     console.log(data);
@@ -74,7 +74,7 @@ async function useProducts(url: string) {
     let products: Product[] = [];
 
     if (data && data.products) {
-      products = await Promise.all(
+      /*products = await Promise.all(
          data.products.map(async (product: any) => {  
           const resizedImages = await resizeImages(product.images, 300, 300);
           return {
@@ -86,7 +86,15 @@ async function useProducts(url: string) {
             images: resizedImages,
           };
         })
-      );
+      );*/
+      products = data.products.map((product: any) => ({      
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        rating: product.rating,
+        stock: product.stock,
+        images: product.images
+      }));
     } else if (!isLoading) {
       error = true;
     }
