@@ -1,22 +1,23 @@
-"use client";
+
 import styles from "./page.module.css";
-import { useSingleProduct } from '@/app/lib/data';
+import { getSingleProduct } from '@/app/lib/data';
 import AddToCartButton from '@/app/ui/main/AddToCartButton';
 import Image from 'next/image';
 import StarRating from '@/app/ui/main/StarRating';
 
-export default function Page({
+export default async function Page({
   searchParams,
 }: {
   searchParams?: { id?: number };
 }) {
   const id = searchParams?.id || -1;
   console.log("Starting fetching process for product: " + id);
-  const { product, isLoading, isError } = useSingleProduct(id);
-  if (isError || !product) return <div>failed to load</div>
+  const product = await getSingleProduct(id);
+  /*if (isError) return <div>failed to load</div>
   if (isLoading) return (
-    <h1>Loading...</h1>
-  )
+    <div>Loading...</div>
+  )*/
+  if (!product) return <div>product not found</div>
 
   return (
     <div className={styles.container}>

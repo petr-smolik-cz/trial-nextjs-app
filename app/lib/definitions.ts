@@ -1,11 +1,19 @@
 
-  export type Product = {
+  export type RawProduct = {
     id: number;
     title: string;
     price: number;
     rating: number;
     stock: number;
     images: string[];
+  };
+  export type Product = {
+    id: number;
+    title: string;
+    price: number;
+    rating: number;
+    stock: number;
+    image: string;
   };
 
   export type DetailedProduct = {

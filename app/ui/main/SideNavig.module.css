@@ -42,7 +42,7 @@
     font-weight: bold;
     font-size: 19px;
     color: #512787;
-    transition: font-size 0.15s linear, color 0.15s linear;
+    transition: none;
   }
 
   .activeLink:hover {

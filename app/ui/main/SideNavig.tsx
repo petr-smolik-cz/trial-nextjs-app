@@ -1,6 +1,6 @@
 "use client";
 import styles from "./sidenavig.module.css";
-import { useProductCategories } from '@/app/lib/data';
+import { useProductCategories } from '@/app/lib/clientData';
 import Link from 'next/link';
 import { SideNavigSkeleton } from '@/app/ui/skeletons';
 import { usePathname } from 'next/navigation';
@@ -8,14 +8,15 @@ import { usePathname } from 'next/navigation';
 export default function SideNav() {
     const pathname = usePathname();
     const { categories, isLoading, isError } = useProductCategories();
-    if (isError || categories === undefined) return <div>failed to load</div>
-    if (isLoading) return <SideNavigSkeleton />       
+    if (isError) return <div>categories failed to load</div>
+    if (isLoading) return <SideNavigSkeleton />  
+    if (!categories) return <div>categories not found</div>
     
     return (
         <nav className={styles.sideMenu}>
             <ul className={styles.menuList}>
-                {categories.map((category: string, index: number) => (
-                    <li key={index}>                      
+                {categories.map((category: string) => (
+                    <li key={category}>                      
                         <Link href={`/${category}`}
                             className={pathname === `/${category}` ? `${styles.link} ${styles.activeLink}` : styles.link}>
                             { capitalizeWords(category) }

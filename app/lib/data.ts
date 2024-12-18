@@ -1,11 +1,8 @@
-"use client";
-import useSWR from 'swr';
-import { Product, DetailedProduct } from '@/app/lib/definitions';
-//import sharp from 'sharp';
 
-const fetcher = (url: string) => fetch(url).then(r => r.json())
+import { RawProduct, Product, DetailedProduct } from '@/app/lib/definitions';
+import sharp from 'sharp';
 
-export function useFiltredProducts(category: string, query: string) {
+export function getFiltredProducts(category: string, query: string) {
   var urlRequest: string;
   if (query) {
     urlRequest = `https://dummyjson.com/products/search?q=${query}?select=id,title,price,rating,stock,images`;
@@ -13,69 +10,44 @@ export function useFiltredProducts(category: string, query: string) {
   else {
     urlRequest = `https://dummyjson.com/products/category/${category}?select=id,title,price,rating,stock,images`;
   } 
-  return useProducts(urlRequest);
+  return getProducts(urlRequest);
 }
 
-export function useAllProducts() {
-   return useProducts('https://dummyjson.com/products?select=id,title,price,rating,stock,images')
+export function getAllProducts() {
+   return getProducts('https://dummyjson.com/products?select=id,title,price,rating,stock,images')
 }
 
-/*export function useCategoryProducts(category: string) {
-  return useFetcher(`https://dummyjson.com/products/category/${category}`)
-}*/
-
-/*export function useSearchProducts(query: string) {
-  return useFetcher(`https://dummyjson.com/products/search?q=${query}`)
-}*/
-
-export function useProductCategories() {
-  const { data, error: errorConst, isLoading } = useSWR<string[]>('https://dummyjson.com/products/category-list', fetcher);
-  var error = errorConst;
-  console.log(data);
-
-  if (!data && !isLoading) {
-    error = true;
-  }
-
-  return {
-    categories: data,
-    isLoading,
-    isError: Boolean(error)
-  }
-}
-
-type PackedProducts = { products: Product[] };
-
-async function downloadImage(imageUrl: string): Promise<Buffer> {
+// Helper function to resize images
+async function resizeImage(imageUrl: string, width: number, height: number): Promise<string> {
   const response = await fetch(imageUrl);
-  const arrayBuffer = await response.arrayBuffer();
-  return Buffer.from(arrayBuffer);
+  const imageBuffer = await response.arrayBuffer();
+  const resizedImageBuffer = await sharp(Buffer.from(imageBuffer))
+    .resize(width, height)
+    .toBuffer();
+  return resizedImageBuffer.toString('base64'); // Return base64 string for the resized image
 }
 
-/*async function resizeImage(imageBuffer: Buffer, width: number, height: number): Promise<Buffer> {
-  return await sharp(imageBuffer).resize(width, height).toBuffer();
-}
+type PackedRawProducts = { products: RawProduct[] };
 
-async function resizeImages(imageUrls: string[], width: number, height: number): Promise<string[]> {
-  return await Promise.all(
-    imageUrls.map(async (imageUrl: string) => {
-      const imageBuffer = await downloadImage(imageUrl); // Fetch image as Buffer
-      const resizedImageBuffer = await resizeImage(imageBuffer, width, height); // Resize image
-      return resizedImageBuffer.toString('base64'); // Convert buffer to base64 string
-    })
-  );
-}*/
+async function getProducts(url: string): Promise<Product[]> {
+  let products: Product[] = [];
 
-function useProducts(url: string) {
-    const { data, error: errorConst, isLoading } = useSWR<PackedProducts>(url, fetcher);
-    var error = errorConst;
-    console.log(data);
+  console.log("Trying to fetch products");
 
-    let products: Product[] = [];
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      console.error("Error fetching products");
+      throw new Error(`Error fetching products: ${response.statusText}`);
+    }
+
+    // Parse response data
+    const data: PackedRawProducts = await response.json();
 
     if (data && data.products) {
       /*products = await Promise.all(
-         data.products.map(async (product: any) => {  
+         data.products.map(async (product: Product) => {  
           const resizedImages = await resizeImages(product.images, 300, 300);
           return {
             id: product.id,
@@ -87,16 +59,41 @@ function useProducts(url: string) {
           };
         })
       );*/
-      products = data.products.map((product: any) => ({      
+      products = data.products.map((product: RawProduct) => ({
         id: product.id,
         title: product.title,
         price: product.price,
         rating: product.rating,
         stock: product.stock,
-        images: product.images
+        image: product.images[0],
       }));
-    } else if (!isLoading) {
-      error = true;
+    }
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    throw new Error('Failed to fetch products');
+  }
+
+  return products;
+}
+
+/*function getProducts2(url: string) {
+    const { data, error: errorConst, isLoading } = useSWR<PackedRawProducts>(url, fetcher);
+    var error = errorConst;
+    console.log(data);
+
+    let products: Product[] = [];
+
+    if (data && data.products) {
+      
+      
+      products = data.products.map((product: RawProduct) => ({      
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        rating: product.rating,
+        stock: product.stock,
+        image: product.images[0],
+      }));
     }
 
     return {
@@ -104,15 +101,63 @@ function useProducts(url: string) {
       isLoading,
       isError: Boolean(error)
     }
+  }*/
+
+  export async function getSingleProduct(id: number): Promise<DetailedProduct> {
+    console.log("Trying to fetch product with id:", id);
+  
+    let product: DetailedProduct | null = null;
+  
+    try {
+      const response = await fetch(
+        `https://dummyjson.com/products/${id}?select=id,title,description,category,price,rating,stock,tags,brand,sku,weight,dimensions,warrantyInformation,shippingInformation,reviews,returnPolicy,images`
+      );
+  
+      if (!response.ok) {
+        throw new Error(`Failed to fetch product with id: ${id}`);
+      }
+  
+      const data = await response.json();
+      console.log("Single product:", data);
+  
+      product = {
+        id: data.id,
+        title: data.title,
+        description: data.description,
+        category: data.category,
+        price: data.price,
+        rating: data.rating,
+        stock: data.stock,
+        tags: data.tags,
+        brand: data.brand,
+        sku: data.sku,
+        weight: data.weight,
+        dimensions: {
+          width: data.dimensions.width,
+          height: data.dimensions.height,
+          depth: data.dimensions.depth,
+        },
+        warrantyInformation: data.warrantyInformation,
+        shippingInformation: data.shippingInformation,
+        reviews: data.reviews,
+        returnPolicy: data.returnPolicy,
+        images: data.images,
+      };
+    } catch (error) {
+      console.error(`Error fetching product with id: ${id}:`, error);
+      throw new Error(`Failed to fetch product with id: ${id}`);
+    }
+  
+    return product;
   }
 
-export function useSingleProduct(id: number) {
+/*export function useSingleProduct(id: number) {
   console.log("Trying to fetch product with id: " + id);
   const { data, error: errorConst, isLoading } = useSWR<DetailedProduct>('https://dummyjson.com/products/' + id 
     + `?select=id,title,description,category,price,rating,stock,tags,brand,sku,weight,dimensions,
     warrantyInformation,shippingInformation,reviews,returnPolicy,images`, fetcher);
   var error = errorConst;
-  console.log("Data of single product:", data);
+  console.log("Single product:", data);
 
   let product: DetailedProduct | null = null;
 
@@ -142,15 +187,11 @@ export function useSingleProduct(id: number) {
       returnPolicy: p.returnPolicy,
       images: p.images,
     };
-  } else if (!isLoading) {
-    error = true;
   }
-
-  console.log("Was fetching successful:", !error);
 
   return {
     product,
     isLoading,
     isError: Boolean(error)
   }
-}
+}*/

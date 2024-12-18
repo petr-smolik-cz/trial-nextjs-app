@@ -7,9 +7,9 @@ import { ProductSkeleton } from '@/app/ui/skeletons';
 export default function CardWrapper({ products }: { products: Product[] }) { 
     return (      
         <div className={styles.cartContainer}>
-            {products.map((product: Product, index: number) => (
+            {products.map((product: Product) => (
                 <Link key={product.id} href={`/product/${formatLink(product.title)}?id=${product.id}`}>
-                    <ProductCart key={index} product={product} />
+                    <ProductCart product={product} />
                 </Link>
             ))}
         </div>

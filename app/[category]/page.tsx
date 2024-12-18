@@ -1,9 +1,9 @@
-"use client";
-import { useFiltredProducts } from '@/app/lib/data';
+
+import { getFiltredProducts } from '@/app/lib/data';
 import CardWrapper from '@/app/ui/main/CardWrapper';
 import { CardWrapperSkeleton } from '@/app/ui/main/CardWrapper';
 
-export default function Page({
+export default async function Page({
   params,
   searchParams,
 }: {
@@ -14,9 +14,10 @@ export default function Page({
   const query = searchParams?.query || '';
   /*const category = "";
   const query = "";*/
-  const { products, isLoading, isError } = useFiltredProducts(category, query);
-  if (isError) return <div>failed to load</div>
-  if (isLoading) return <CardWrapperSkeleton />
+  const products = await getFiltredProducts(category, query);
+  /*if (isError) return <div>failed to load</div>
+  if (isLoading) return <CardWrapperSkeleton />*/
+  if (!products) return <div>products not found</div>
 
   return (
     <CardWrapper products={products}/>
