@@ -1,6 +1,5 @@
 
 import { RawProduct, Product, DetailedProduct } from '@/app/lib/definitions';
-import sharp from 'sharp';
 
 export function getFiltredProducts(category: string, query: string) {
   var urlRequest: string;
@@ -15,16 +14,6 @@ export function getFiltredProducts(category: string, query: string) {
 
 export function getAllProducts() {
    return getProducts('https://dummyjson.com/products?select=id,title,price,rating,stock,images')
-}
-
-// Helper function to resize images
-async function resizeImage(imageUrl: string, width: number, height: number): Promise<string> {
-  const response = await fetch(imageUrl);
-  const imageBuffer = await response.arrayBuffer();
-  const resizedImageBuffer = await sharp(Buffer.from(imageBuffer))
-    .resize(width, height)
-    .toBuffer();
-  return resizedImageBuffer.toString('base64'); // Return base64 string for the resized image
 }
 
 type PackedRawProducts = { products: RawProduct[] };
@@ -46,28 +35,27 @@ async function getProducts(url: string): Promise<Product[]> {
     const data: PackedRawProducts = await response.json();
 
     if (data && data.products) {
-      /*products = await Promise.all(
-         data.products.map(async (product: Product) => {  
-          const resizedImages = await resizeImages(product.images, 300, 300);
+      products = await Promise.all(
+         data.products.map(async (product: RawProduct) => {  
           return {
             id: product.id,
             title: product.title,
             price: product.price,
             rating: product.rating,
             stock: product.stock,
-            images: resizedImages,
+            image: product.images[0],
           };
         })
-      );*/
-      products = data.products.map((product: RawProduct) => ({
+      );
+    }
+      /*products = data.products.map((product: RawProduct) => ({
         id: product.id,
         title: product.title,
         price: product.price,
         rating: product.rating,
         stock: product.stock,
         image: product.images[0],
-      }));
-    }
+      }));*/ 
   } catch (error) {
     console.error("Error fetching products:", error);
     throw new Error('Failed to fetch products');
