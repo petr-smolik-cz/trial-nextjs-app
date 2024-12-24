@@ -19,14 +19,15 @@ export async function GET(request: NextRequest) {
     const buffer = await response.arrayBuffer();
 
     // Parse width and height, with defaults if not provided
-    const resizeWidth = width ? parseInt(width, 10) : 220;
+    const resizeWidth = width ? parseInt(width, 10) : 330;
 
     const resizedBuffer = await sharp(Buffer.from(buffer))
-      .resize(resizeWidth, null) // Fix height, auto width
+      .resize(null, resizeWidth) // Auto height, fix width
+      .png() // Explicitly output as PNG
       .toBuffer();
 
     return new Response(resizedBuffer, {
-      headers: { "Content-Type": "image/jpeg" },
+      headers: { "Content-Type": "image/png" },
     });
   } catch (error) {
     console.error("Image processing error:", error);
