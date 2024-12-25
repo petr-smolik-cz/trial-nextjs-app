@@ -2,6 +2,7 @@
 import { getFiltredProducts } from '@/app/lib/data';
 import CardWrapper from '@/app/ui/main/CardWrapper';
 import { CardWrapperSkeleton } from '@/app/ui/main/CardWrapper';
+import { Suspense } from 'react';
 
 export default async function Page({
   params,
@@ -16,10 +17,12 @@ export default async function Page({
   const query = "";*/
   const products = await getFiltredProducts(category, query);
   /*if (isError) return <div>failed to load</div>
-  if (isLoading) return <CardWrapperSkeleton />*/
-  if (!products) return <div>products not found</div>
+  if (isLoading) return <CardWrapperSkeleton />
+  if (!products) return <div>products not found</div>*/
 
-  return (
-    <CardWrapper products={products}/>
+  return ( 
+    <Suspense fallback={<CardWrapperSkeleton />}>
+      <CardWrapper/>
+    </Suspense>
   );
 }
