@@ -1,6 +1,5 @@
-
-import CardWrapper from '@/app/ui/main/CardWrapper';
-import { CardWrapperSkeleton } from '@/app/ui/main/CardWrapper';
+import { CardWrapperSkeleton } from '@/app/ui/skeletons';
+import { AllCardWrapper } from '@/app/ui/main/CardWrapper';
 import { Suspense } from 'react';
 
 export default function Page() { 
@@ -11,7 +10,7 @@ export default function Page() {
   
   return ( 
     <Suspense fallback={<CardWrapperSkeleton />}>
-      <CardWrapper/>
+      <AllCardWrapper/>
     </Suspense>
   );
 }

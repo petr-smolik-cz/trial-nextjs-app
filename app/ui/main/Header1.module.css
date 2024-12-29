@@ -43,6 +43,7 @@
     max-width: 700px;
     outline: none;
     line-height: 40px;
+    color: #000000;
   }
   
   .searchInput:focus {

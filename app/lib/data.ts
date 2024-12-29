@@ -1,15 +1,12 @@
 
 import { RawProduct, Product, DetailedProduct } from '@/app/lib/definitions';
 
-export function getFiltredProducts(category: string, query: string) {
-  var urlRequest: string;
-  if (query) {
-    urlRequest = `https://dummyjson.com/products/search?q=${query}?select=id,title,price,rating,stock,images`;
-  }
-  else {
-    urlRequest = `https://dummyjson.com/products/category/${category}?select=id,title,price,rating,stock,images`;
-  } 
-  return getProducts(urlRequest);
+export function getCategoryProducts(category: string) {
+  return getProducts(`https://dummyjson.com/products/category/${category}?select=id,title,price,rating,stock,images`);
+}
+
+export function getQueryProducts(query: string) {
+  return getProducts(`https://dummyjson.com/products/search?q=${query}&select=id,title,price,rating,stock,images`);
 }
 
 export function getAllProducts() {
@@ -21,7 +18,7 @@ type PackedRawProducts = { products: RawProduct[] };
 async function getProducts(url: string): Promise<Product[]> {
   let products: Product[] = [];
 
-  console.log("Trying to fetch products");
+  console.log("Trying to fetch products: ", url);
 
   try {
     const response = await fetch(url);

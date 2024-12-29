@@ -123,3 +123,10 @@
   .menuList li:last-child hr {
     display: none;
   }
+
+  .cartContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 5px; /* Gap between product carts */
+  }
+  

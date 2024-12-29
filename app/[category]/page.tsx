@@ -1,7 +1,5 @@
-
-import { getFiltredProducts } from '@/app/lib/data';
-import CardWrapper from '@/app/ui/main/CardWrapper';
-import { CardWrapperSkeleton } from '@/app/ui/main/CardWrapper';
+import { CardWrapperSkeleton } from '@/app/ui/skeletons';
+import { CategoryCardWrapper, QueryCardWrapper } from '@/app/ui/main/CardWrapper';
 import { Suspense } from 'react';
 
 export default async function Page({
@@ -13,16 +11,26 @@ export default async function Page({
 }) {
   const category = params.category;
   const query = searchParams?.query || '';
-  /*const category = "";
-  const query = "";*/
-  const products = await getFiltredProducts(category, query);
+
+  console.log("Starting fetching process for category: " + category + " and query: " + query);
+
+  let CardWrapper;
+
+  if (category && category !== 'search') {
+    CardWrapper = <CategoryCardWrapper category={category} />;
+  } else if (query) {
+    CardWrapper = <QueryCardWrapper query={query} />;
+  }  else {
+    throw new Error('No category or query provided');
+  }
+
   /*if (isError) return <div>failed to load</div>
   if (isLoading) return <CardWrapperSkeleton />
   if (!products) return <div>products not found</div>*/
 
   return ( 
     <Suspense fallback={<CardWrapperSkeleton />}>
-      <CardWrapper/>
+      {CardWrapper}
     </Suspense>
   );
 }

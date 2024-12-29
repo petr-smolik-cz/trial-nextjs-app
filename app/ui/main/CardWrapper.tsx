@@ -1,38 +1,29 @@
 import styles from "./CardWrapper.module.css";
 import { Product } from '@/app/lib/definitions';
 import ProductCart from '@/app/ui/main/ProductCart';
-import { ProductSkeleton } from '@/app/ui/skeletons';
-import { getAllProducts, getFiltredProducts } from '@/app/lib/data';
+import { getAllProducts, getCategoryProducts, getQueryProducts } from '@/app/lib/data';
 
-export default async function CardWrapper({
-    category,
-    query,
-}: { 
-    category?: string;
-    query?: string;
-}) { 
-    let products: Product[] = [];
-    if (category || query) {
-        products = await getFiltredProducts(category, query);
-    } else {
-        products = await getAllProducts();
-    }
-    
+export async function AllCardWrapper() {
+    let products = await getAllProducts();
+    return CardWrapper(products);
+}
+
+export async function CategoryCardWrapper({ category }: { category: string}) {
+    let products = await getCategoryProducts(category);
+    return CardWrapper(products);
+}
+
+export async function QueryCardWrapper({ query }: { query: string}) {
+    let products = await getQueryProducts(query);
+    return CardWrapper(products);
+}
+
+function CardWrapper(products: Product[]) {     
     return (      
         <div className={styles.cartContainer}>
             {products.map((product: Product) => (
                 <ProductCart key={product.id} product={product} />
             ))}
-        </div>
-    );
-}
-
-export function CardWrapperSkeleton() {
-    return (     
-        <div className={styles.cartContainer}>
-            {[...Array(12)].map((x, i) =>
-                <ProductSkeleton key={i + 1}/>
-            )}      
         </div>
     );
 }

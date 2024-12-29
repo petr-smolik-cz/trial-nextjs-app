@@ -40,3 +40,13 @@ export function SideNavigSkeleton() {
     </nav>
   );
  }
+
+ export function CardWrapperSkeleton() {
+  return (     
+      <div className={styles.cartContainer}>
+          {[...Array(12)].map((x, i) =>
+              <ProductSkeleton key={i + 1}/>
+          )}      
+      </div>
+  );
+}
