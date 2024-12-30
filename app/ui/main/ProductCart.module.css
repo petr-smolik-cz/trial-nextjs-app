@@ -14,9 +14,11 @@
 }
 
 .productImgContainer {
-  height: 220px; 
-  width: auto; 
-  padding: 50px;
+  height: 210px;
+  width: 100%; 
+  padding: 0px 12px;
+  margin-top: 25px;
+  margin-bottom: 5px;
   border-radius: 5px;
   overflow: hidden;
   display: flex;
@@ -28,7 +30,8 @@
   margin: 0 auto;
   border-radius: 5px;
   width: auto;
-  height: 220px;
+  height: 210px;
+  object-fit: cover;
 }
 
 .productInfo {

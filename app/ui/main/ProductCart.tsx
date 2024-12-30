@@ -11,8 +11,8 @@ export default function ProductCart({ product }: { product: Product }) {
     <Link href={`/product/${formatLink(product.title)}?id=${product.id}`}> 
       <div className={styles.product}>
         <div className={styles.productImgContainer}>
-          <Image className={styles.productImg} src={`/api/image?src=${encodeURIComponent(product.image)}&width=${330}`}
-            alt={productName} width={220} height={220} />
+          <Image className={styles.productImg} src={`/api/image?src=${encodeURIComponent(product.image)}&height=${210}`}
+            alt={productName} width={210} height={210} />
         </div>
         <div className={styles.productInfo}>
           <div className={styles.ratingContainer}>

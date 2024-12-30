@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { genos } from '@/app/ui/fonts';
+import { openSans } from '@/app/ui/fonts';
 import styles from "./layout.module.css";
 import SideNav from '@/app/ui/main/SideNavig';
 import Header from '@/app/ui/main/Header1';
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={genos.className}>
+      <body className={openSans.className}>
         <div className={styles.container}>
           <Header />
           <SideNav />

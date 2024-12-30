@@ -17,6 +17,7 @@
     border-radius: 5px;
     width: auto;
     height: 512px;
+    object-fit: cover;
   }
   
   .imageGallery {
@@ -30,6 +31,7 @@
     margin-right: 10px;
     border-radius: 5px;
     cursor: pointer;
+    object-fit: cover;
   }
   
   .detailsSection {

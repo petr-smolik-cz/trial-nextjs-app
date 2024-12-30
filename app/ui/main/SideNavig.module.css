@@ -16,8 +16,8 @@
   .menuList li {
     width: 100%;
     color: #391F5B;
-    font-size: 17px;
-    padding: 0px 0px;
+    font-size: 14px;
+    padding: 0px;
   }
 
   /*.menuList li:hover {
@@ -34,20 +34,20 @@
   }
 
   .link:hover {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
   }
 
   .activeLink {
     font-weight: bold;
-    font-size: 19px;
+    font-size: 16px;
     color: #512787;
     transition: none;
   }
 
   .activeLink:hover {
     font-weight: bold;
-    font-size: 19px;
+    font-size: 16px;
     color: #512787;
   }
 
