@@ -26,9 +26,8 @@
   }
   
   .imageGallery img {
-    width: 60px;
-    height: 60px;
-    margin-right: 10px;
+    width: 95px;
+    height: 70px;
     border-radius: 5px;
     cursor: pointer;
     object-fit: cover;

@@ -10,7 +10,7 @@
     color: #FFFFFF;
     cursor: pointer;
     width: 125px;
-    font-size: 15px;
+    font-size: 14px;
     padding: 11px 9px;
     font-weight: 400;
     letter-spacing: .04em;
@@ -23,15 +23,7 @@
   .addToCartButton:hover {
     background-image: linear-gradient(#bd8cd4, #4e2c7a 50%);
   }
-  
-  @media (min-width: 768px) {
-    .addToCartButton {
-      width: 125px;
-      font-size: 15px;
-      padding: 11px 9px;
-    }
-  }
-  
+ 
   .icon {
     width: 20px;
     height: 20px;

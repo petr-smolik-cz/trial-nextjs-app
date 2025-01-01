@@ -20,7 +20,8 @@
   }
   
   .pageName {
-    font-size: 24px;
+    font-size: 22px;
+    font-weight: bold;
     color: #391F5B;
   }
   
@@ -36,7 +37,7 @@
     flex: 1 1 auto;
     padding-left: 43px;
     border-radius: 20px;
-    font-size: 16px;
+    font-size: 15px;
     background: #fbfbfb;
     border: none;
     height: 40px;
@@ -110,7 +111,8 @@
     color: #fff;
     text-align: center;
     border-radius: 8px;
-    padding: 5px 7px 7px 7px;
+    padding: 5px 8px 6px;
+    font-size: 14px;
     position: absolute;
     top: 125%; /* Move tooltip below the button */
     left: 50%;
@@ -139,12 +141,12 @@
     opacity: 1;
   }
 
-  @media (min-width: 768px) {
+  /*@media (min-width: 768px) {
     .loginButton,
     .shoppingCartButton {
 
     }
-  }
+  }*/
   
   .icon {
     width: 26px;

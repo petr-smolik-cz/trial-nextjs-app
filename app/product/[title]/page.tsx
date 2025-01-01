@@ -25,7 +25,7 @@ export default async function Page({
         <Image src={product.images[0]} alt="Image of product" className={styles.bigImage} width={512} height={512}/>
         <div className={styles.imageGallery}>
           {product.images.map((image, index) => (
-            <Image key={index} src={image} alt={`Gallery image ${index + 1}`} width={250} height={250} />
+            <Image key={index} src={image} alt={`Gallery image ${index + 1}`} width={95} height={70} />
           ))}
         </div>
       </div>

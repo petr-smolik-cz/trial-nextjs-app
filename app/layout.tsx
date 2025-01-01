@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={openSans.className}>
+      <body className={`${openSans.className} antialiased`}>
         <div className={styles.container}>
           <Header />
           <SideNav />
@@ -25,7 +25,7 @@ export default function RootLayout({
             {children}
           </main>      
           <footer className={styles.footer}>
-            <p><span>&copy;</span>&nbsp;2024 YourShop |&nbsp;<a href="#">About</a></p>
+            <p><span>&copy;</span>&nbsp;2024 YourShop.com |&nbsp;<a href="#">About</a></p>
           </footer>
         </div>  
       </body>
