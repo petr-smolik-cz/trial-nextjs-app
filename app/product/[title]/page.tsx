@@ -1,9 +1,9 @@
 
-import styles from "./page.module.css";
+/*import styles from "./page.module.css";*/
 import { getSingleProduct } from '@/app/lib/data';
 import AddToCartButton from '@/app/ui/main/AddToCartButton';
-import Image from 'next/image';
 import StarRating from '@/app/ui/main/StarRating';
+import ProductGallery from '@/app/ui/main/ProductGallery';
 
 export default async function Page({
   searchParams,
@@ -20,22 +20,16 @@ export default async function Page({
   if (!product) return <div>product not found</div>
 
   return (
-    <div className={styles.container}>
-      <div className={styles.imageSection}>
-        <Image src={product.images[0]} alt="Image of product" className={styles.bigImage} width={512} height={512}/>
-        <div className={styles.imageGallery}>
-          {product.images.map((image, index) => (
-            <Image key={index} src={image} alt={`Gallery image ${index + 1}`} width={95} height={70} />
-          ))}
-        </div>
-      </div>
-      <div className={styles.detailsSection}>
-        <h1 className={styles.title}>{product.title}</h1>
-        <p className={styles.price}>${product.price.toFixed(2)}</p>
-        <p className={styles.stock}>
+    <div className="grid grid-cols-1 md:grid-cols-3 p-5">   
+      <ProductGallery images={product.images}/>
+    
+      <div className="col-span-2">
+        <h1 className="text-2xl font-bold mb-3">{product.title}</h1>
+        <p className="text-xl text-orange-500 mb-4">${product.price.toFixed(2)}</p>
+        <p className={`mb-4 ${product.stock > 0 ? 'text-green-600' : 'text-red-600'}`}>
           {product.stock > 0 ? `In Stock: ${product.stock}` : 'Out of Stock'}
         </p>
-        <p className={styles.description}>{product.description}</p>
+        <p className="mt-4">{product.description}</p>
         <p><strong>Brand:</strong> {product.brand}</p>
         <p><strong>SKU:</strong> {product.sku}</p>
         <p><strong>Weight:</strong> {product.weight}g</p>
@@ -43,15 +37,16 @@ export default async function Page({
         <p><strong>Warranty:</strong> {product.warrantyInformation}</p>
         <p><strong>Shipping:</strong> {product.shippingInformation}</p>
         <p><strong>Return Policy:</strong> {product.returnPolicy}</p>
-        <AddToCartButton />       
+        <AddToCartButton />
       </div>
-      <div className={styles.reviews}>
-        <h2>Customer Reviews</h2>
+    
+      <div className="col-span-3 mt-10">
+        <h2 className="text-xl font-semibold mb-5">Customer Reviews</h2>
         {product.reviews.map((review, index) => (
-          <div key={index} className={styles.review}>
-            <StarRating rating={review.rating}/>
+          <div key={index} className="p-4 border border-gray-300 rounded-lg mb-4">
+            <StarRating rating={review.rating} />
             <p>{review.comment}</p>
-            <p><small>{new Date(review.date).toLocaleDateString()}</small></p>
+            <p className="text-sm text-gray-500">{new Date(review.date).toLocaleDateString()}</p>
           </div>
         ))}
       </div>
