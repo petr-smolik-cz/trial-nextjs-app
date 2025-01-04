@@ -20,27 +20,36 @@ export default async function Page({
   if (!product) return <div>product not found</div>
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 p-5">   
-      <ProductGallery images={product.images}/>
-    
-      <div className="col-span-2">
+    <div className="grid grid-cols-1 md:grid-cols-9 p-5">  
+      <div className="col-span-5 m-5 mr-10 flex flex-col justify-center">
+        <ProductGallery images={product.images}/>
+      </div> 
+      {/* Right Section: Product Details */}
+      <div className="col-span-4 relative p-5 border rounded-lg">
         <h1 className="text-2xl font-bold mb-3">{product.title}</h1>
-        <p className="text-xl text-orange-500 mb-4">${product.price.toFixed(2)}</p>
-        <p className={`mb-4 ${product.stock > 0 ? 'text-green-600' : 'text-red-600'}`}>
-          {product.stock > 0 ? `In Stock: ${product.stock}` : 'Out of Stock'}
-        </p>
-        <p className="mt-4">{product.description}</p>
-        <p><strong>Brand:</strong> {product.brand}</p>
-        <p><strong>SKU:</strong> {product.sku}</p>
-        <p><strong>Weight:</strong> {product.weight}g</p>
-        <p><strong>Dimensions:</strong> {product.dimensions.width}x{product.dimensions.height}x{product.dimensions.depth} cm</p>
-        <p><strong>Warranty:</strong> {product.warrantyInformation}</p>
-        <p><strong>Shipping:</strong> {product.shippingInformation}</p>
-        <p><strong>Return Policy:</strong> {product.returnPolicy}</p>
-        <AddToCartButton />
+        <p className="mt-4 mb-6">{product.description}</p>
+        {/* Two Columns for Other Details */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-3 mt-5">
+          <p className="text-xl text-orange-500 mb-4">${product.price.toFixed(2)}</p>
+          <p className={`mb-4 ${product.stock > 0 ? 'text-green-600' : 'text-red-600'}`}>
+            {product.stock > 0 ? `In Stock: ${product.stock}` : 'Out of Stock'}
+          </p>
+          <p><strong>Brand:</strong> {product.brand}</p>
+          <p><strong>SKU:</strong> {product.sku}</p>
+          <p><strong>Weight:</strong> {product.weight}g</p>
+          <p><strong>Dimensions:</strong> {product.dimensions.width}x{product.dimensions.height}x{product.dimensions.depth} cm</p>
+          <p><strong>Warranty:</strong> {product.warrantyInformation}</p>
+          <p><strong>Shipping:</strong> {product.shippingInformation}</p>
+          <p><strong>Return Policy:</strong> {product.returnPolicy}</p>
+        </div>
+
+        {/* AddToCartButton in bottom-right corner */}
+        <div className="absolute bottom-5 right-5">
+          <AddToCartButton />
+        </div>
       </div>
     
-      <div className="col-span-3 mt-10">
+      <div className="col-span-9 mt-10">
         <h2 className="text-xl font-semibold mb-5">Customer Reviews</h2>
         {product.reviews.map((review, index) => (
           <div key={index} className="p-4 border border-gray-300 rounded-lg mb-4">
