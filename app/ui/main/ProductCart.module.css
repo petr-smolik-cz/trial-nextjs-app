@@ -16,11 +16,10 @@
 
 .productImg {
   margin-top: 20px;
-  padding: 0px 12px;
   border-radius: 5px;
   width: auto;
-  height: 210px;
-  object-fit: cover;
+  height: 225px;
+  object-fit: contain;
 }
 
 .productInfo {

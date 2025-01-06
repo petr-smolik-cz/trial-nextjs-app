@@ -22,7 +22,7 @@ export default async function Page({
   return (
     <div className="grid grid-cols-1 md:grid-cols-9 p-5">  
       <div className="col-span-5 m-5 mr-10 flex flex-col justify-center">
-        <ProductGallery images={product.images}/>
+        <ProductGallery images={product.images} productName={product.title}/>
       </div> 
       {/* Right Section: Product Details */}
       <div className="col-span-4 relative p-5 border rounded-lg">
@@ -50,13 +50,15 @@ export default async function Page({
       </div>
     
       <div className="col-span-9 mt-10">
-        <h2 className="text-xl font-semibold mb-5">Customer Reviews</h2>
+        <h2 className="text-xl font-semibold mb-5">Reviews</h2>
         {product.reviews.map((review, index) => (
           <div key={index} className="p-4 border border-gray-300 rounded-lg mb-4">
-            <StarRating rating={review.rating} />
-            <p>{review.comment}</p>
-            <p className="text-sm text-gray-500">{new Date(review.date).toLocaleDateString()}</p>
-          </div>
+          <StarRating rating={review.rating} />
+          <p className="font-semibold">{review.reviewerName}</p> {/* Added reviewer name */}
+          <p>{review.comment}</p>
+          <p className="text-sm text-gray-500">{new Date(review.date).toLocaleDateString()}</p>
+        </div>
+        
         ))}
       </div>
     </div>

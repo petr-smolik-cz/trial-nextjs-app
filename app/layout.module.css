@@ -16,20 +16,13 @@
 /* Footer Styles */
 .footer {
     grid-area: footer; 
-    padding: 20px;
     background-color: transparent;
+    text-align: center;
 }
 
 .footer p {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: 13px;
-    height: 20px;
-}
-
-.footer span {
-    font-size: 15px;
+    margin-top: 25px;
 }
 
 /* Main Content Styles */
