@@ -70,7 +70,7 @@
     margin: 15px auto;
   }
   
-  .starSkeleton {
+  .star {
     width: 24px;
     height: 24px;
     margin: 0 2px;
@@ -82,25 +82,18 @@
     align-items: center;
     margin: auto 8px 2px 8px;
   }
-  
+
   .toShoppingCartButton {
     width: 140px;
-    height: 40px;
-  }
-  
-  @media (min-width: 768px) {
-    .toShoppingCartButton {
-      width: 140px;
-      font-size: 16px;
-      padding: 11px 10px;
-    }
+    font-size: 16px;
+    padding: 11px 10px;
   }
   
   .menuList {
     margin-top: 25px;
   }
 
-  .skeletonText {
+  .link {
     width: 80%;
     height: 12px;
     margin: 12px auto;
@@ -108,7 +101,7 @@
   }
   
   /* Border between skeleton items */
-  .skeletonBorderBetween {
+  .borderBetween {
     position: relative;
     width: 50%;
     height: 2px;

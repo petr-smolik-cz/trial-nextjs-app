@@ -8,11 +8,11 @@ export function ProductSkeleton() {
       </div>
       <div className={styles.productInfo}>
         <div className={styles.ratingContainer}>
-          <div className={`${styles.skeleton} ${styles.starSkeleton}`}></div>
-          <div className={`${styles.skeleton} ${styles.starSkeleton}`}></div>
-          <div className={`${styles.skeleton} ${styles.starSkeleton}`}></div>
-          <div className={`${styles.skeleton} ${styles.starSkeleton}`}></div>
-          <div className={`${styles.skeleton} ${styles.starSkeleton}`}></div>
+          <div className={`${styles.skeleton} ${styles.star}`}></div>
+          <div className={`${styles.skeleton} ${styles.star}`}></div>
+          <div className={`${styles.skeleton} ${styles.star}`}></div>
+          <div className={`${styles.skeleton} ${styles.star}`}></div>
+          <div className={`${styles.skeleton} ${styles.star}`}></div>
         </div>
         <div className={`${styles.skeleton} ${styles.productName}`}></div>
         <div className={`${styles.skeleton} ${styles.productStock}`}></div>
@@ -32,8 +32,8 @@ export function SideNavigSkeleton() {
         {/* Skeleton loading placeholders */}
         {Array.from({ length: 20 }).map((_, index) => (
           <li key={index}>
-            <div className={`${styles.skeleton} ${styles.skeletonText}`}></div>
-            <hr className={`${styles.skeleton} ${styles.skeletonBorderBetween}`} />
+            <div className={`${styles.skeleton} ${styles.link}`}></div>
+            <hr className={`${styles.skeleton} ${styles.borderBetween}`} />
           </li>
         ))}
       </ul>

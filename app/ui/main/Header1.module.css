@@ -22,7 +22,7 @@
   .pageName {
     font-size: 22px;
     font-weight: bold;
-    color: #391F5B;
+    color: var(--color-primary);
   }
   
   .searchContainer {
@@ -49,7 +49,7 @@
   
   .searchInput:focus {
     /*box-shadow: 1px 1px 6px 1px #d4d4d4 inset;*/
-    border: 1px solid #391F5B;
+    border: 1px solid var(--color-primary);
   }
 
   .searchInput::placeholder {
@@ -78,8 +78,8 @@
     justify-content: center;
     background-color: transparent;
     border-radius: 50%;
-    border: 1px solid #391F5B;
-    color: #391F5B;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
     cursor: pointer;
     margin: 0;
     padding: 5px;
@@ -100,14 +100,14 @@
   
   .loginButton:hover,
   .shoppingCartButton:hover {
-    /*background-image: linear-gradient(#B384C9, #391F5B 50%);*/
-    color: #512787;
-    border-color: #512787;
+    /*background-image: linear-gradient(#B384C9, var(--color-primary) 50%);*/
+    color: var(--color-secondary);
+    border-color: var(--color-secondary);
   }
   
   .tooltipText {
     visibility: hidden;
-    background-color: #512787;
+    background-color: var(--color-secondary);
     color: #fff;
     text-align: center;
     border-radius: 8px;
@@ -132,7 +132,7 @@
     transform: translateX(-50%);
     border-width: 7px;
     border-style: solid;
-    border-color: transparent transparent #512787 transparent;
+    border-color: transparent transparent var(--color-secondary) transparent;
   }
   
   .shoppingCartButton:hover .tooltipText, 
@@ -162,6 +162,6 @@
   .searchIcon {
     composes: icon;
     position: absolute;
-    color: #391F5B;
+    color: var(--color-primary);
     margin-left: 15px;
   }

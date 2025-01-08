@@ -15,7 +15,7 @@
 
   .menuList li {
     width: 100%;
-    color: #391F5B;
+    color: var(--color-primary);
     font-size: 14px;
     padding: 0px;
   }
@@ -41,20 +41,20 @@
   .activeLink {
     font-weight: bold;
     font-size: 16px;
-    color: #512787;
+    color: var(--color-secondary);
     transition: none;
   }
 
   .activeLink:hover {
     font-weight: bold;
     font-size: 16px;
-    color: #512787;
+    color: var(--color-secondary);
   }
 
   .borderBetween {
     width: 80%;
     margin: 0px auto;
-    border-image: linear-gradient(to right, transparent 0%, 28%, #391F5B 50%, 72%, transparent 100%) 1;
+    border-image: linear-gradient(to right, transparent 0%, 28%, var(--color-primary) 50%, 72%, transparent 100%) 1;
     border-width: thin;
     border-style: solid;
   } 

@@ -40,7 +40,7 @@
 
 .productPrice {
   font-size: 22px;
-  /*color: #391F5B;*/
+  /*color: var(--color-primary);*/
   font-weight: 500;
   cursor: text;
 }

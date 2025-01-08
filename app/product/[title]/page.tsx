@@ -29,7 +29,7 @@ export default async function Page({
         <h1 className="text-2xl font-bold mb-3">{product.title}</h1>
         <p className="mt-4 mb-6">{product.description}</p>
         {/* Two Columns for Other Details */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-3 mt-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 rounded-lg p-5">
           <p className="text-xl text-orange-500 mb-4">${product.price.toFixed(2)}</p>
           <p className={`mb-4 ${product.stock > 0 ? 'text-green-600' : 'text-red-600'}`}>
             {product.stock > 0 ? `In Stock: ${product.stock}` : 'Out of Stock'}
