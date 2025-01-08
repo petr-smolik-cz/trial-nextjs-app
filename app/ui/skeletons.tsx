@@ -3,9 +3,7 @@ import styles from "./skeletons.module.css";
 export function ProductSkeleton() {
   return (
     <div className={styles.product}>
-      <div className={`${styles.skeleton} ${styles.productImgContainer}`}>
-        <div className={`${styles.skeleton} ${styles.productImg}`}></div>
-      </div>
+      <div className={`${styles.skeleton} ${styles.productImg}`}></div>
       <div className={styles.productInfo}>
         <div className={styles.ratingContainer}>
           <div className={`${styles.skeleton} ${styles.star}`}></div>
@@ -48,5 +46,11 @@ export function SideNavigSkeleton() {
               <ProductSkeleton key={i + 1}/>
           )}      
       </div>
+  );
+}
+
+export function MainImageSkeleton() {
+  return (     
+      <div className={`${styles.skeleton} ${styles.mainImageDetails}`}></div>
   );
 }
