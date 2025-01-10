@@ -9,7 +9,7 @@ export default function SideNav() {
     const pathname = usePathname();
     const { categories, isLoading, isError } = useProductCategories();
     if (isError) return <div>categories failed to load</div>
-    if (isLoading) return <SideNavigSkeleton />  
+    if (isLoading) return <SideNavigSkeleton />
     if (!categories) return <div>categories not found</div>
     
     return (
