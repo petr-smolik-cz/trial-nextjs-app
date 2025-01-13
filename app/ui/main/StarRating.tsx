@@ -1,4 +1,3 @@
-import { StarIcon } from '@heroicons/react/20/solid';
 import styles from './StarRating.module.css';
 
 export default function StarRating({ rating }: { rating: number }) {
@@ -9,4 +8,3 @@ export default function StarRating({ rating }: { rating: number }) {
         </div>
     );
 }
-

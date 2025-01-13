@@ -21,7 +21,7 @@ export default async function Page({
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-9 p-5">  
-      <div className="col-span-5 m-5 mr-10 flex flex-col justify-center">
+      <div className="col-span-5 m-5 mr-10 flex flex-col items-center justify-center bg-green-100">
         <ProductGallery images={product.images} productName={product.title}/>
       </div> 
       {/* Right Section: Product Details */}

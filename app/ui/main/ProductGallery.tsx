@@ -7,6 +7,8 @@ export default function ProductGallery({ images, productName }: { images: string
   const [mainImage, setMainImage] = useState(images[0]); // Initial big image
   const [showSkeleton, setShowSkeleton] = useState(false); // Controls skeleton visibility
   const skeletonTimeoutRef = useRef<NodeJS.Timeout | null>(null); // Ref to track skeleton timeout
+  const imageLoadedRef = useRef<boolean>(false); // Ref to track image loading state after page reloaded
+
 
   const handleMainImageChange = (newImage: string) => {
     if (newImage !== mainImage) {
@@ -25,14 +27,20 @@ export default function ProductGallery({ images, productName }: { images: string
     }
   };
 
-  const handleImageLoadComplete = () => {
+  const handleImageLoadComplete = () => {   
     if (skeletonTimeoutRef.current) {
       clearTimeout(skeletonTimeoutRef.current); // Clear timeout if image loads quickly
+      console.log("It is cleared");
     }
+    imageLoadedRef.current = true;
     setShowSkeleton(false); // Hide skeleton immediately when image loads
+    console.log("Image loaded");
   };
 
   useEffect(() => {
+    if(imageLoadedRef.current) return; // if image is already loaded, don't show loading skeleton (happens on page reload)
+    
+    console.log("Going to show loading skeleton");
     // Show skeleton with delay on initial load
     skeletonTimeoutRef.current = setTimeout(() => {
       setShowSkeleton(true);
@@ -41,6 +49,7 @@ export default function ProductGallery({ images, productName }: { images: string
     return () => {
       if (skeletonTimeoutRef.current) {
         clearTimeout(skeletonTimeoutRef.current); // Clear timeout on unmount
+        console.log("Loading skeleton timeout cleared");
       }
     };
   }, []);
@@ -69,17 +78,18 @@ export default function ProductGallery({ images, productName }: { images: string
 function MainProductImage({ mainImage, productName, showSkeleton, onLoadComplete }: 
   { mainImage: string, productName: string, showSkeleton: boolean, onLoadComplete: () => void }) {
   return (
-    <div className="relative w-[460px] h-[460px]">
+    <div className="flex items-center justify-center w-[460px] h-[460px] bg-red-200">
       {/* Loading skeleton */}
       {showSkeleton && (
-        <MainImageSkeleton />
+        <Image src="/big-image-file.png" alt={`Image of ${productName}`} width={350} height={350} className="absolute object-contain w-[350px] h-[350px] bg-blue-200" />
       )}
 
       {/* Main image */}
       <Image
-        src={`/api/image?src=${encodeURIComponent(mainImage)}&height=${460}`}
+        src={`/api/image?src=${encodeURIComponent(mainImage)}&height=${440}`} // 460px height
         alt={`Image of ${productName}`}
-        className={`rounded-lg object-contain w-full h-full ${showSkeleton ? 'hidden' : 'block'}`}
+        className={`rounded-lg object-contain w-full h-full 
+          ${showSkeleton ? 'opacity-0' : 'opacity-100'}`}
         width={460}
         height={460}
         onLoadingComplete={onLoadComplete} // Stop loading when image is ready
@@ -91,10 +101,10 @@ function MainProductImage({ mainImage, productName, showSkeleton, onLoadComplete
 export function MiniProductGallery({ images, productName, mainImage, onMainImageChange }: 
   { images: string[], productName: string, mainImage: string, onMainImageChange: (image: string) => void }) {
   
-  const [loadingStates, setLoadingStates] = useState<boolean[]>(images.map(() => true)); // Initial loading states
+  const [showSkeletons, setshowSkeletons] = useState<boolean[]>(images.map(() => true)); // Initial loading states
 
   const handleImageLoadComplete = (index: number) => {
-    setLoadingStates((prevStates) => {
+    setshowSkeletons((prevStates) => {
       const newStates = [...prevStates];
       newStates[index] = false; // Mark image as loaded
       return newStates;
@@ -106,15 +116,16 @@ export function MiniProductGallery({ images, productName, mainImage, onMainImage
       {images.map((image, index) => (
         <div key={index} className="relative w-[90px] h-[90px]">
           {/* Skeleton for small image */}
-          {loadingStates[index] && (
-            <div className="absolute inset-0 bg-gray-300 animate-pulse rounded-lg" />
+          {showSkeletons[index] && (
+            <Image src="/small-image-file.png" alt={`Image of ${productName} ${index + 1}`} width={75} height={75} />
           )}
 
           <Image
-            src={`/api/image?src=${encodeURIComponent(image)}&height=${90}`}
+            src={`/api/image?src=${encodeURIComponent(image)}&height=${85}`} // 90px height
             alt={`Image of ${productName} ${index + 1}`}
             className={`w-full h-full rounded-lg object-contain cursor-pointer 
-              ${mainImage === image ? 'ring-2 ring-primary' : ''}`}
+              ${mainImage === image ? 'ring-2 ring-primary' : ''}
+              ${showSkeletons[index] ? 'opacity-0' : 'opacity-100'}`}
             width={90}
             height={65}
             onLoadingComplete={() => handleImageLoadComplete(index)} // Trigger on load completion
