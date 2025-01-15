@@ -20,12 +20,12 @@ export default async function Page({
   if (!product) return <div>product not found</div>
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-9 p-5">  
-      <div className="col-span-5 m-5 mr-10 flex flex-col items-center justify-center bg-green-100">
+    <div className="grid grid-cols-1 md:grid-cols-9 p-3">  
+      <div className="col-span-5 p-2 mr-10 flex flex-col items-center">
         <ProductGallery images={product.images} productName={product.title}/>
       </div> 
       {/* Right Section: Product Details */}
-      <div className="col-span-4 relative p-5 border rounded-lg">
+      <div className="col-span-4 p-5 mr-10 border border-[var(--color-primary)] rounded-lg backdrop-brightness-[0.98] shadow-[0_20px_30px_-10px_#9e9e9e]">
         <h1 className="text-2xl font-bold mb-3">{product.title}</h1>
         <p className="mt-4 mb-6">{product.description}</p>
         {/* Two Columns for Other Details */}
@@ -44,8 +44,8 @@ export default async function Page({
         </div>
 
         {/* AddToCartButton in bottom-right corner */}
-        <div className="absolute bottom-5 right-5">
-          <AddToCartButton />
+        <div className="absolute bottom-5 right-5 w-2/3">
+          <AddToCartButton width="100%"/>
         </div>
       </div>
     

@@ -1,7 +1,8 @@
 .addToCartButton {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 6px;
     background-color: initial;
     background-image: linear-gradient(#B384C9, var(--color-primary) 50%);
     border-radius: 10px;
@@ -10,6 +11,7 @@
     color: #FFFFFF;
     cursor: pointer;
     width: 123px;
+    min-width: 123px;
     font-size: 14px;
     padding: 11px 9px;
     font-weight: 400;
