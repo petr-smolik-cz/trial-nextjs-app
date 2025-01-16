@@ -25,8 +25,9 @@ export default async function Page({
         <ProductGallery images={product.images} productName={product.title}/>
       </div> 
       {/* Right Section: Product Details */}
-      <div className="col-span-4 p-5 mr-10 border border-[var(--color-primary)] rounded-lg backdrop-brightness-[0.98] shadow-[0_20px_30px_-10px_#9e9e9e]">
+      <div className="col-span-4 p-5 mr-10 w-[475px] h-auto border border-[var(--color-primary)] rounded-lg backdrop-brightness-[0.98] shadow-[0_20px_30px_-10px_#9e9e9e]">
         <h1 className="text-2xl font-bold mb-3">{product.title}</h1>
+        <StarRating rating={product.rating} />
         <p className="mt-4 mb-6">{product.description}</p>
         {/* Two Columns for Other Details */}
         <div className="grid grid-cols-1 sm:grid-cols-2 rounded-lg p-5">
@@ -44,7 +45,7 @@ export default async function Page({
         </div>
 
         {/* AddToCartButton in bottom-right corner */}
-        <div className="absolute bottom-5 right-5 w-2/3">
+        <div className="mx-auto my-2.5 w-4/5">
           <AddToCartButton width="100%"/>
         </div>
       </div>

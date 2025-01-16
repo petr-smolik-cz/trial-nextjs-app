@@ -1,7 +1,14 @@
 "use client";
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { MainImageSkeleton } from '@/app/ui/skeletons';
+
+const borderBetweenStyle: React.CSSProperties = {
+  width: '80%',
+  margin: '0 auto',
+  borderImage: 'linear-gradient(to right, transparent 0%, var(--color-primary) 50%, transparent 100%) 1',
+  borderWidth: 'thin',
+  borderStyle: 'solid',
+};
 
 export default function ProductGallery({ images, productName }: { images: string[], productName: string }) {
   const [mainImage, setMainImage] = useState(images[0]); // Initial big image
@@ -63,7 +70,7 @@ export default function ProductGallery({ images, productName }: { images: string
         showSkeleton={showSkeleton}
         onLoadComplete={handleImageLoadComplete}
       />
-
+      <hr className={styles.borderBetween}/>
       {/* Mini gallery for selecting images */}
       <MiniProductGallery
         images={images}
@@ -78,7 +85,7 @@ export default function ProductGallery({ images, productName }: { images: string
 function MainProductImage({ mainImage, productName, showSkeleton, onLoadComplete }: 
   { mainImage: string, productName: string, showSkeleton: boolean, onLoadComplete: () => void }) {
   return (
-    <div className="flex items-center justify-center w-[460px] h-[460px] shadow-[3px_4px_0px_0px_#391F5B]">
+    <div className="flex items-center justify-center w-[500px] h-[500px] rounded-xl backdrop-brightness-[0.98]">
       {/* Loading skeleton */}
       {showSkeleton && (
         <Image src="/big-image-file.png" alt={`Image of ${productName}`} width={300} height={300} className="absolute object-contain w-[300px] h-[300px]" />
@@ -86,12 +93,12 @@ function MainProductImage({ mainImage, productName, showSkeleton, onLoadComplete
 
       {/* Main image */}
       <Image
-        src={`/api/image?src=${encodeURIComponent(mainImage)}&height=${440}`} // 460px height
+        src={`/api/image?src=${encodeURIComponent(mainImage)}&height=${500}`} // 460px height
         alt={`Image of ${productName}`}
         className={`rounded-lg object-contain w-full h-full 
           ${showSkeleton ? 'opacity-0' : 'opacity-100'}`}
-        width={460}
-        height={460}
+        width={500}
+        height={500}
         onLoadingComplete={onLoadComplete} // Stop loading when image is ready
       />
     </div>
@@ -114,7 +121,7 @@ export function MiniProductGallery({ images, productName, mainImage, onMainImage
   return (
     <div className="flex mt-3 space-x-2 self-start flex-wrap">
       {images.map((image, index) => (
-        <div key={index} className="relative w-[90px] h-[90px] shadow-[3px_4px_0px_0px_#391F5B]">
+        <div key={index} className="relative w-[90px] h-[90px] rounded-xl backdrop-brightness-[0.98]">
           {/* Skeleton for small image */}
           {showSkeletons[index] && (
             <Image src="/small-image-file.png" alt={`Image of ${productName} ${index + 1}`} width={75} height={75} />

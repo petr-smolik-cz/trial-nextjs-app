@@ -48,9 +48,3 @@ export function SideNavigSkeleton() {
       </div>
   );
 }
-
-export function MainImageSkeleton() {
-  return (     
-      <div className={`${styles.skeleton} ${styles.mainImageDetails}`}></div>
-  );
-}

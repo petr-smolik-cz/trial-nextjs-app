@@ -45,14 +45,6 @@ async function getProducts(url: string): Promise<Product[]> {
         })
       );
     }
-      /*products = data.products.map((product: RawProduct) => ({
-        id: product.id,
-        title: product.title,
-        price: product.price,
-        rating: product.rating,
-        stock: product.stock,
-        image: product.images[0],
-      }));*/ 
   } catch (error) {
     console.error("Error fetching products:", error);
     throw new Error('Failed to fetch products');
@@ -60,33 +52,6 @@ async function getProducts(url: string): Promise<Product[]> {
 
   return products;
 }
-
-/*function getProducts2(url: string) {
-    const { data, error: errorConst, isLoading } = useSWR<PackedRawProducts>(url, fetcher);
-    var error = errorConst;
-    console.log(data);
-
-    let products: Product[] = [];
-
-    if (data && data.products) {
-      
-      
-      products = data.products.map((product: RawProduct) => ({      
-        id: product.id,
-        title: product.title,
-        price: product.price,
-        rating: product.rating,
-        stock: product.stock,
-        image: product.images[0],
-      }));
-    }
-
-    return {
-      products,
-      isLoading,
-      isError: Boolean(error)
-    }
-  }*/
 
   export async function getSingleProduct(id: number): Promise<DetailedProduct> {
     console.log("Trying to fetch product with id:", id);
@@ -135,48 +100,3 @@ async function getProducts(url: string): Promise<Product[]> {
   
     return product;
   }
-
-/*export function useSingleProduct(id: number) {
-  console.log("Trying to fetch product with id: " + id);
-  const { data, error: errorConst, isLoading } = useSWR<DetailedProduct>('https://dummyjson.com/products/' + id 
-    + `?select=id,title,description,category,price,rating,stock,tags,brand,sku,weight,dimensions,
-    warrantyInformation,shippingInformation,reviews,returnPolicy,images`, fetcher);
-  var error = errorConst;
-  console.log("Single product:", data);
-
-  let product: DetailedProduct | null = null;
-
-  if (data) {
-    const p = data;
-
-    product = {
-      id: p.id,
-      title: p.title,
-      description: p.description,
-      category: p.category,
-      price: p.price,
-      rating: p.rating,
-      stock: p.stock,
-      tags: p.tags,
-      brand: p.brand,
-      sku: p.sku,
-      weight: p.weight,
-      dimensions: {
-        width: p.dimensions.width,
-        height: p.dimensions.height,
-        depth: p.dimensions.depth,
-      },
-      warrantyInformation: p.warrantyInformation,
-      shippingInformation: p.shippingInformation,
-      reviews: p.reviews,
-      returnPolicy: p.returnPolicy,
-      images: p.images,
-    };
-  }
-
-  return {
-    product,
-    isLoading,
-    isError: Boolean(error)
-  }
-}*/
