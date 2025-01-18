@@ -15,10 +15,10 @@ export default function Error({
   }, [error]);
  
   return (
-    <main className="flex h-full flex-col items-center justify-center">
+    <main className="fixed inset-0 m-auto h-[200px] w-[300px] flex flex-col gap-y-3.5 items-center justify-center">
       <h2 className="text-center">Something went wrong!</h2>
       <button
-        className="mt-4 rounded-md bg-blue-500 px-4 py-2 text-sm text-white transition-colors hover:bg-blue-400"
+        className="bg-primary rounded-lg border-0 text-white cursor-pointer text-sm px-3 py-2 tracking-wide select-none hover:bg-secondary transition-colors duration-200 ease-in-out"
         onClick={
           // Attempt to recover by trying to re-render the invoices route
           () => reset()
