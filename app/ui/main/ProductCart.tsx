@@ -14,10 +14,7 @@ export default function ProductCart({ product }: { product: Product }) {
           alt={productName} width={225} height={225}
         />
         <div className={styles.productInfo}>
-          <div className={styles.ratingContainer}>
-            <StarRating rating={product.rating}/>
-            <span className={styles.productRating}>{product.rating}</span>
-          </div>
+          <StarRating rating={product.rating}/>
           <h2 className={styles.productName}>{productName}</h2>                   
           <p className={styles.productStock}>Stock: {product.stock}</p>
           <div className={styles.priceContainer}>

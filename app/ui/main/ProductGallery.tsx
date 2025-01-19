@@ -3,8 +3,8 @@ import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 
 const borderBetweenStyle: React.CSSProperties = {
-  width: '80%',
-  margin: '0 auto',
+  width: '54%',
+  margin: '17px auto',
   borderImage: 'linear-gradient(to right, transparent 0%, var(--color-primary) 50%, transparent 100%) 1',
   borderWidth: 'thin',
   borderStyle: 'solid',
@@ -70,7 +70,7 @@ export default function ProductGallery({ images, productName }: { images: string
         showSkeleton={showSkeleton}
         onLoadComplete={handleImageLoadComplete}
       />
-      <hr className={styles.borderBetween}/>
+      <hr style={borderBetweenStyle} />
       {/* Mini gallery for selecting images */}
       <MiniProductGallery
         images={images}
@@ -119,7 +119,7 @@ export function MiniProductGallery({ images, productName, mainImage, onMainImage
   };
 
   return (
-    <div className="flex mt-3 space-x-2 self-start flex-wrap">
+    <div className="flex space-x-2 self-start flex-wrap">
       {images.map((image, index) => (
         <div key={index} className="relative w-[90px] h-[90px] rounded-xl backdrop-brightness-[0.98]">
           {/* Skeleton for small image */}

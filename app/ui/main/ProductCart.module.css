@@ -53,18 +53,6 @@
   cursor: text;
 }
 
-.ratingContainer {
-  display: flex;
-  align-items: center;
-  margin: 0px auto 5px;
-}
-
-.productRating {
-  margin-left: 5px;
-  cursor: text;
-  font-size: 13px;
-}
-
 .priceContainer {
   display: flex;
   justify-content: space-between;
