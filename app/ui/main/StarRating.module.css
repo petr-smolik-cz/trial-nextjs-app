@@ -1,4 +1,12 @@
 
+.ratingContainer {
+  height: 32px;
+  width: 146px;
+  display: flex;
+  align-items: center;
+  margin: 0px auto 5px;
+}
+
 .starRating {
     margin-bottom: 5px;
     display: inline-block;
@@ -21,16 +29,10 @@
     left: 0;
     overflow: hidden;
   }
-
-  .ratingContainer {
-    display: flex;
-    align-items: center;
-    margin: 0px auto 5px;
-  }
   
   .productRating {
-    margin-left: 5px;
+    margin-left: 3px;
     cursor: text;
-    font-size: 13px;
+    font-size: 12px;
   }
   

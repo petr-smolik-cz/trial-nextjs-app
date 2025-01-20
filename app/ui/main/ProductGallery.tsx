@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const borderBetweenStyle: React.CSSProperties = {
   width: '54%',
-  margin: '17px auto',
+  margin: '15px auto',
   borderImage: 'linear-gradient(to right, transparent 0%, var(--color-primary) 50%, transparent 100%) 1',
   borderWidth: 'thin',
   borderStyle: 'solid',

@@ -6,6 +6,7 @@
     padding: 20px;
     background-color: transparent;
     color: white;
+    min-width: 700px;
   }
   
   .logoTitleContainer {
