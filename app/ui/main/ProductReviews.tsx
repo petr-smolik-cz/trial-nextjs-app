@@ -1,0 +1,18 @@
+import { Review } from '@/app/lib/definitions';
+import StarRating from '@/app/ui/main/StarRating';
+
+export default function ProductReviews({ reviews }: { reviews: Review[] }) {
+    return (
+        <>
+            <h2 className="text-xl font-semibold mb-5">Reviews</h2>
+            {reviews.map((review, index) => (
+                <div key={index} className="p-4 border border-gray-300 rounded-lg mb-4">
+                    <StarRating rating={review.rating} />
+                    <p className="font-semibold">{review.reviewerName}</p> {/* Added reviewer name */}
+                    <p>{review.comment}</p>
+                    <p className="text-sm text-gray-500">{new Date(review.date).toLocaleDateString()}</p>
+                </div>       
+            ))}
+        </>
+    );
+}

@@ -40,7 +40,7 @@
     images: string[];
   };
 
-  type Review = {
+  export type Review = {
     rating: number;
     comment: string;
     date: string;
