@@ -10,9 +10,22 @@
     grid-template-rows: 110px auto 60px;
     min-height: 100vh;
     overflow-x: scroll;
-    /*border: 2px solid #333;
-    border-radius: 5px 5px 0 0;*/
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      #ffffff
+    )
+    #dfe7e8;
 }
+
+@media only screen and (min-width: 1550px) {
+    /* Grid Container */
+    .container {
+      max-width: 1550px;
+      border-inline: 1px solid var(--color-primary);
+      margin: 0 auto;
+    }
+  } 
 
 /* Footer Styles */
 .footer {

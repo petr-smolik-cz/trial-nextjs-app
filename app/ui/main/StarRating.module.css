@@ -1,11 +1,10 @@
 
 .ratingContainer {
   height: 32px;
-  width: 146px;
+  width: 140px;
   display: flex;
   align-items: center;
   margin: 0px auto 5px;
-  background-color: aqua;
 }
 
 .starRating {

@@ -2,17 +2,17 @@ import styles from './StarRating.module.css';
 
 export default function StarRating({ 
     rating, 
-    ratingContainerStyle 
+    customStyle 
 }: { 
     rating: number; 
-    ratingContainerStyle?: React.CSSProperties; // Optional inline style prop
+    customStyle?: React.CSSProperties; // Optional inline style prop
 }) {
     let percentageRating: number = (rating / 5) * 100;
 
     return (
         <div 
             className={styles.ratingContainer} 
-            style={ratingContainerStyle} // Apply the passed inline style here
+            style={customStyle} // Apply the passed inline style here
         >
             <div>
                 <span className={styles.starRating}>

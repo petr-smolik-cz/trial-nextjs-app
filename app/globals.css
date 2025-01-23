@@ -19,12 +19,7 @@
 }
 
 body {
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      #ffffff
-    )
-    #dfe7e8;
+  background: white;
 }
 
 a {

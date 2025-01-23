@@ -8,29 +8,34 @@ export default function ProductInfo({ product }: { product: DetailedProduct }) {
             style={{ boxShadow: 'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px' }}
         >
             <div className="flex flex-row justify-between items-center">
-                <p className="italic">{product.brand}</p>
-                <StarRating rating={product.rating} />
+                <p className="italic text-sm">{product.brand}</p>
+                <StarRating rating={product.rating} customStyle={{ margin: '0px 0px 5px' }} />
             </div>
             
-            <h1 className="text-2xl font-bold mb-3">{product.title}</h1>
+            <h1 className="text-2xl font-bold">{product.title}</h1>
             
-            <p className="mt-4 mb-6">{product.description}</p>
+            <p className="mt-2">{product.description}</p>
             {/* Two Columns for Other Details */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 rounded-lg p-5">        
-            
-            
-            
-            <p><strong>SKU:</strong> {product.sku}</p>
-            <p><strong>Weight:</strong> {product.weight}g</p>
-            <p><strong>Dimensions:</strong> {product.dimensions.width}x{product.dimensions.height}x{product.dimensions.depth} cm</p>
-            <p><strong>Warranty:</strong> {product.warrantyInformation}</p>
-            <p><strong>Shipping:</strong> {product.shippingInformation}</p>
-            <p><strong>Return Policy:</strong> {product.returnPolicy}</p>
-            </div>
 
+            <div className="flex flex-col gap-2 mt-2 justify-between"> 
+                <p>Weight: {product.weight}g</p>
+                <p>Dimensions: {product.dimensions.width}x{product.dimensions.height}x{product.dimensions.depth} cm</p>
+                <p>Warranty:{product.warrantyInformation}</p>
+                <p>Shipping: {product.shippingInformation}</p>
+                <p>Return Policy: {product.returnPolicy}</p>
+            </div>
+            <input
+  type="number"
+  id="amount"
+  name="amount"
+  min="1"
+  max="100"
+  step="1"
+  defaultValue={10}
+/>
             {/* AddToCartButton in bottom-right corner */}
             <div className="flex flex-row justify-between items-center">
-                <p className="text-4xl text-[var(--color-primary)] p-2 border-2 border-[var(--color-primary)] rounded-lg">${formatNumber(product.price)}</p>
+                <p className="text-[32px] text-[var(--color-primary)] p-2 border-2 border-[var(--color-primary)] rounded-lg">${formatNumber(product.price)}</p>
                 <p className="">
                     {product.stock > 0 ? `Stock: ${product.stock}` : 'Out of Stock'}
                 </p>
