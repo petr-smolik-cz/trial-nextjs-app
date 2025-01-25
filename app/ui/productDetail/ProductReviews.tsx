@@ -1,5 +1,5 @@
 import { Review } from '@/app/lib/definitions';
-import StarRating from '@/app/ui/main/StarRating';
+import StarRating from '@/app/ui/StarRating';
 
 export default function ProductReviews({ reviews }: { reviews: Review[] }) {
     return (

@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import styles from './ProductCart.module.css';
 import { Product } from '@/app/lib/definitions';
-import StarRating from '@/app/ui/main/StarRating';
-import AddToCartButton from '@/app/ui/main/AddToCartButton';
+import StarRating from '@/app/ui/StarRating';
+import AddToCartButton from '@/app/ui/AddToCartButton';
 import Link from 'next/link';
 
 export default function ProductCart({ product }: { product: Product }) {

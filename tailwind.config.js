@@ -9,6 +9,9 @@ module.exports = {
         primary: '#391F5B',
         secondary: '#512787',
       },
+      screens: {
+        'max-dp': { max: '1324px' }, 
+      },
     },
   },
   plugins: [],

@@ -1,9 +1,9 @@
 
 /*import styles from "./page.module.css";*/
 import { getSingleProduct } from '@/app/lib/data';
-import ProductGallery from '@/app/ui/main/ProductGallery';
-import ProductInfo from '@/app/ui/main/ProductInfo';
-import ProductReviews from '@/app/ui/main/ProductReviews';
+import ProductGallery from '@/app/ui/productDetail/ProductGallery';
+import ProductInfo from '@/app/ui/productDetail/ProductInfo';
+import ProductReviews from '@/app/ui/productDetail/ProductReviews';
 
 export default async function Page({
   searchParams,
@@ -20,8 +20,8 @@ export default async function Page({
   if (!product) return <div>product not found</div>
 
   return (
-    <div className="min-w-[950px] p-2">  
-      <div className="flex flex-row">
+    <div className="min-w-[600px] p-2">  
+      <div className="flex flex-row max-dp:flex-wrap max-dp:justify-center max-dp:gap-8">
         <div className="basis-7/12 shrink-0 min-w-[500px] flex flex-col items-center">
           <ProductGallery images={product.images} productName={product.title}/>
         </div> 
@@ -30,7 +30,7 @@ export default async function Page({
           <ProductInfo product={product} />
         </div>   
       </div>
-      <div className="mt-10">
+      <div className="mt-14">
         <ProductReviews reviews={product.reviews} />
       </div>
     </div>
