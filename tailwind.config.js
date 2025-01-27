@@ -10,7 +10,7 @@ module.exports = {
         secondary: '#512787',
       },
       screens: {
-        'max-dp': { max: '1324px' }, 
+        'max-dp': { max: '1436px' }, 
       },
     },
   },

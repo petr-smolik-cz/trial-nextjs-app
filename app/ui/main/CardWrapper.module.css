@@ -1,6 +1,6 @@
 
 .cartContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 290px);
+  grid-template-columns: repeat(auto-fill, 300px);
   gap: 5px; /* Gap between product carts */
 }

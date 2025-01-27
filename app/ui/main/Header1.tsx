@@ -38,12 +38,12 @@ export default function Header() {
             </div>
             <button className={styles.shoppingCartButton}>
                 <ShoppingCartIcon className={styles.icon} />
-                <span className={styles.tooltipText}>Your shopping cart</span>
+                <span className={styles.tooltipText}>Your shopping cart<br/>(Coming Soon)</span>
             </button>
-            <button className={styles.loginButton}>
+            {/*<button className={styles.loginButton}>
                 <UserIcon className={styles.userIcon} />
                 <span className={styles.tooltipText}>Login</span>
-            </button>     
+            </button>   */}  
         </header>
   );
 }

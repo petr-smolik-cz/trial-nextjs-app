@@ -92,6 +92,7 @@
   .shoppingCartButton {
     composes: roundedButton;
     margin-left: auto;
+    margin-right: 36px;
   }
   
   .loginButton {
