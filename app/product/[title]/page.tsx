@@ -21,12 +21,12 @@ export default async function Page({
 
   return (
     <div className="min-w-[600px] p-2">  
-      <div className="flex flex-row max-dp:flex-wrap max-dp:justify-center max-dp:gap-8">
-        <div className="basis-7/12 shrink-0 min-w-[500px] flex flex-col items-center">
+      <div className="flex flex-row justify-between max-dp:flex-wrap max-dp:justify-center max-dp:gap-8">
+        <div className="shrink-0 flex-grow min-w-[500px] flex flex-col items-center">
           <ProductGallery images={product.images} productName={product.title}/>
         </div> 
         {/* Right Section: Product Details */}
-        <div className="basis-5/12 min-w-[490px] pl-2 shrink-0">
+        <div className="pl-16 shrink-0">
           <ProductInfo product={product} />
         </div>   
       </div>

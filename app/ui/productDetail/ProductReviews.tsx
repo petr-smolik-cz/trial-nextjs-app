@@ -4,9 +4,9 @@ import StarRating from '@/app/ui/StarRating';
 export default function ProductReviews({ reviews }: { reviews: Review[] }) {
     return (
         <>
-            <h2 className="text-xl font-semibold mb-5">Reviews</h2>
+            <h2 className="text-2xl font-semibold text-[var(--color-primary)] mt-8 mb-5">Reviews</h2>
             {reviews.map((review, index) => (
-                <div key={index} className="p-4 border border-gray-300 rounded-lg mb-4">
+                <div key={index} className="p-4 border border-[var(--color-primary)] rounded-3xl backdrop-brightness-[0.96] mb-4">
                     <StarRating rating={review.rating} />
                     <p className="font-semibold">{review.reviewerName}</p> {/* Added reviewer name */}
                     <p>{review.comment}</p>

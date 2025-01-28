@@ -37,7 +37,7 @@ export default function ProductInfo({ product }: { product: DetailedProduct }) {
             <QuantitySelector 
                 quantity={quantity} 
                 onQuantityChange={handleQuantityChange} 
-                classname="mt-4" 
+                classname="my-5" 
             />
 
             <div className="flex flex-row justify-between items-center">
