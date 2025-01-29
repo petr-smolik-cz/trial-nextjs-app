@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 
 const borderBetweenStyle: React.CSSProperties = {
-  width: '54%',
+  width: '400px',
   margin: '15px auto',
   borderImage: 'linear-gradient(to right, transparent 0%, var(--color-primary) 50%, transparent 100%) 1',
   borderWidth: 'thin',
@@ -119,7 +119,7 @@ export function MiniProductGallery({ images, productName, mainImage, onMainImage
   };
 
   return (
-    <div className="flex space-x-2 self-start flex-wrap">
+    <div className="w-full max-w-[650px] flex space-x-2 flex-wrap">
       {images.map((image, index) => (
         <div key={index} className="relative w-[90px] h-[90px] rounded-xl backdrop-brightness-[0.98]">
           {/* Skeleton for small image */}

@@ -1,14 +1,22 @@
 import { Review } from '@/app/lib/definitions';
 import StarRating from '@/app/ui/StarRating';
+import { ChatBubbleLeftIcon } from '@heroicons/react/24/solid';
+import { UserCircleIcon } from '@heroicons/react/24/outline';
 
 export default function ProductReviews({ reviews }: { reviews: Review[] }) {
     return (
         <>
-            <h2 className="text-2xl font-semibold text-[var(--color-primary)] mt-8 mb-5">Reviews</h2>
+            <div className="mt-8 mb-6 h-8 flex flex-row items-center gap-[9px]">
+                <h2 className="text-[25px] font-bold text-[var(--color-primary)] ">Reviews</h2>
+                <ChatBubbleLeftIcon className="w-[27px] h-[27px] mt-[1px] text-[var(--color-primary)]"/>
+            </div>
             {reviews.map((review, index) => (
-                <div key={index} className="p-4 border border-[var(--color-primary)] rounded-3xl backdrop-brightness-[0.96] mb-4">
-                    <StarRating rating={review.rating} />
-                    <p className="font-semibold">{review.reviewerName}</p> {/* Added reviewer name */}
+                <div key={index} className="px-4 py-1 min-h-[140px] border border-[var(--color-primary)] rounded-3xl backdrop-brightness-[0.96] mb-4">           
+                    <div className="flex flex-row items-center gap-1.5 w-full">
+                        <UserCircleIcon className="w-6 h-6"/>
+                        <p className="font-semibold">{review.reviewerName}</p>
+                        <StarRating rating={review.rating} customStyle={{ alignSelf: 'flex-end', marginRight: 'auto' }}/>
+                    </div>
                     <p>{review.comment}</p>
                     <p className="text-sm text-gray-500">{new Date(review.date).toLocaleDateString()}</p>
                 </div>       

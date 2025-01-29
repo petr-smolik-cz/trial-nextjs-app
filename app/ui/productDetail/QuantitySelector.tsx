@@ -32,33 +32,37 @@ export default function QuantitySelector({
     onQuantityChange(newValue);
   };
 
-  return (
-    <div className={`flex items-center ${classname || ""}`}>
-      {/* Decrease Button */}
-      <button
-        className="w-9 h-9 flex items-center justify-center rounded-l-md bg-[#44246e] text-white cursor-pointer hover:bg-[#694991]"
-        onClick={handleDecrease}
-      >
-        <MinusIcon className="w-5 h-5" />
-      </button>
+  return (   
+    <div className={`flex flex-col ${classname || ""}`}>
+      <label htmlFor="quantity" className="text-[var(--color-primary)] text-[11px] font-bold mb-[1px]">Quantity</label>
+      <div className="flex items-center">
+        {/* Decrease Button */}
+        <button
+          className="w-9 h-9 flex items-center justify-center rounded-l-md bg-[#44246e] text-white cursor-pointer hover:bg-[#694991]"
+          onClick={handleDecrease}
+        >
+          <MinusIcon className="w-5 h-5" />
+        </button>
 
-      {/* Input Field */}
-      <input
-        type="number"
-        className="w-[46px] h-9 text-center text-lg border-t border-b border-[var(--color-primary)] appearance-none focus:outline-none"
-        value={quantity.toString()} // Always update to the latest number as a string
-        onChange={handleInputChange}
-        min="1" // Set minimum value to 1
-        max="999" // Set maximum value to 999
-      />
+        {/* Input Field */}
+        <input
+          type="number"
+          id="quantity"
+          className="w-[46px] h-9 text-center text-lg border-t border-b border-[var(--color-primary)] appearance-none focus:outline-none"
+          value={quantity.toString()} // Always update to the latest number as a string
+          onChange={handleInputChange}
+          min="1" // Set minimum value to 1
+          max="999" // Set maximum value to 999
+        />
 
-      {/* Increase Button */}
-      <button
-        className="w-9 h-9 flex items-center justify-center rounded-r-md bg-[#44246e] text-white cursor-pointer text-[26px] hover:bg-[#694991]"
-        onClick={handleIncrease}
-      >
-        <PlusIcon className="w-5 h-5" />
-      </button>
+        {/* Increase Button */}
+        <button
+          className="w-9 h-9 flex items-center justify-center rounded-r-md bg-[#44246e] text-white cursor-pointer text-[26px] hover:bg-[#694991]"
+          onClick={handleIncrease}
+        >
+          <PlusIcon className="w-5 h-5" />
+        </button>
+      </div>
     </div>
   );
 }
