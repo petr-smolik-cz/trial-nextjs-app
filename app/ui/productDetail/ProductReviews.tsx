@@ -13,7 +13,7 @@ export default function ProductReviews({ reviews }: { reviews: Review[] }) {
             {reviews.map((review, index) => (
                 <div
                     key={index}
-                    className="flex flex-col px-4 py-1 min-h-[140px] border border-[var(--color-primary)] rounded-3xl backdrop-brightness-[0.96] mb-4"
+                    className="flex flex-col px-4 py-1 min-h-[140px] border border-[var(--color-primary)] rounded-xl backdrop-brightness-[0.96] mb-4"
                 >           
                     {/* Header */}
                     <div className="flex flex-row items-center gap-1.5 w-full">
@@ -23,7 +23,7 @@ export default function ProductReviews({ reviews }: { reviews: Review[] }) {
                     </div>
                 
                     {/* Comment */}
-                    <p className="mt-4 mx-9 mb-3 text-[15px]">{review.comment}</p>
+                    <p className="mt-4 mx-9 mb-3 text-[15px]">{"\"" + review.comment + "\""}</p>
                 
                     {/* Date aligned to bottom-right */}
                     <p className="text-[13px] ml-auto mt-auto mb-0.5 mr-1">{new Date(review.date).toLocaleDateString()}</p>
