@@ -34,7 +34,7 @@ export default function QuantitySelector({
 
   return (   
     <div className={`flex flex-col ${classname || ""}`}>
-      <label htmlFor="quantity" className="text-[var(--color-primary)] text-[12px] font-bold">Quantity</label>
+      <label htmlFor="quantity" className="text-[var(--color-primary)] text-[12px] mb-[1px] font-bold">Quantity</label>
       <div className="flex items-center">
         {/* Decrease Button */}
         <button
