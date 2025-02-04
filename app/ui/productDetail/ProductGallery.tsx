@@ -85,10 +85,10 @@ export default function ProductGallery({ images, productName }: { images: string
 function MainProductImage({ mainImage, productName, showSkeleton, onLoadComplete }: 
   { mainImage: string, productName: string, showSkeleton: boolean, onLoadComplete: () => void }) {
   return (
-    <div className="flex items-center justify-center w-[500px] h-[500px] rounded-xl backdrop-brightness-[0.98]">
+    <div className="relative flex items-center justify-center w-[500px] h-[500px] rounded-xl backdrop-brightness-[0.98]">
       {/* Loading skeleton */}
       {showSkeleton && (
-        <Image src="/big-image-file.png" alt={`Image of ${productName}`} width={300} height={300} className="absolute object-contain w-[300px] h-[300px]" />
+        <Image src="/big-image-file.png" alt={`Image of ${productName}`} width={300} height={300} className="absolute w-[300px] h-[300px]" />
       )}
 
       {/* Main image */}
@@ -121,14 +121,14 @@ export function MiniProductGallery({ images, productName, mainImage, onMainImage
   return (
     <div className="w-full max-w-[650px] flex space-x-2 flex-wrap">
       {images.map((image, index) => (
-        <div key={index} className="relative w-[90px] h-[90px] rounded-xl backdrop-brightness-[0.98]">
+        <div key={index} className="relative flex items-center justify-center w-[90px] h-[90px] rounded-xl backdrop-brightness-[0.98]">
           {/* Skeleton for small image */}
           {showSkeletons[index] && (
-            <Image src="/small-image-file.png" alt={`Image of ${productName} ${index + 1}`} width={75} height={75} />
+            <Image src="/small-image-file.png" alt={`Image of ${productName} ${index + 1}`} width={75} height={75} className="absolute w-[75px] h-[75px]" />
           )}
 
           <Image
-            src={`/api/image?src=${encodeURIComponent(image)}&height=${85}`} // 90px height
+            src={`/api/image?src=${encodeURIComponent(image)}&height=${85}`} 
             alt={`Image of ${productName} ${index + 1}`}
             className={`w-full h-full rounded-lg object-contain cursor-pointer 
               ${mainImage === image ? 'ring-2 ring-primary' : ''}
