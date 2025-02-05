@@ -1,4 +1,4 @@
-import styles from "./skeletons.module.css";
+import styles from "./mainPageSkeletons.module.css";
 
 export function ProductSkeleton() {
   return (

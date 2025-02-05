@@ -37,11 +37,11 @@ export default function ProductGallery({ images, productName }: { images: string
   const handleImageLoadComplete = () => {   
     if (skeletonTimeoutRef.current) {
       clearTimeout(skeletonTimeoutRef.current); // Clear timeout if image loads quickly
-      console.log("It is cleared");
+      console.log("Loading skeleton timeout cleared");
     }
     imageLoadedRef.current = true;
     setShowSkeleton(false); // Hide skeleton immediately when image loads
-    console.log("Image loaded");
+    console.log("Image loaded successfully");
   };
 
   useEffect(() => {
@@ -93,13 +93,13 @@ function MainProductImage({ mainImage, productName, showSkeleton, onLoadComplete
 
       {/* Main image */}
       <Image
-        src={`/api/image?src=${encodeURIComponent(mainImage)}&height=${500}`} // 460px height
+        src={`/api/image?src=${encodeURIComponent(mainImage)}&height=${500}`}
         alt={`Image of ${productName}`}
         className={`rounded-lg object-contain w-full h-full 
           ${showSkeleton ? 'opacity-0' : 'opacity-100'}`}
         width={500}
         height={500}
-        onLoadingComplete={onLoadComplete} // Stop loading when image is ready
+        onLoad={onLoadComplete} // Stop loading when image is ready
       />
     </div>
   );
@@ -133,9 +133,9 @@ export function MiniProductGallery({ images, productName, mainImage, onMainImage
             className={`w-full h-full rounded-lg object-contain cursor-pointer 
               ${mainImage === image ? 'ring-2 ring-primary' : ''}
               ${showSkeletons[index] ? 'opacity-0' : 'opacity-100'}`}
-            width={90}
-            height={65}
-            onLoadingComplete={() => handleImageLoadComplete(index)} // Trigger on load completion
+            width={85}
+            height={85}
+            onLoad={() => handleImageLoadComplete(index)} // Trigger on load completion
             onClick={() => onMainImageChange(image)}
           />
         </div>

@@ -2,7 +2,7 @@
 import styles from "./sidenavig.module.css";
 import { useProductCategories } from '@/app/lib/clientData';
 import Link from 'next/link';
-import { SideNavigSkeleton } from '@/app/ui/skeletons';
+import { SideNavigSkeleton } from '@/app/ui/skeletons/mainPageSkeletons';
 import { usePathname } from 'next/navigation';
 
 export default function SideNav() {

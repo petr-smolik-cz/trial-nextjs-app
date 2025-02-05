@@ -1,15 +1,18 @@
-import { CardWrapperSkeleton } from '@/app/ui/skeletons';
+import { CardWrapperSkeleton } from '@/app/ui/skeletons/mainPageSkeletons';
 import { CategoryCardWrapper, QueryCardWrapper } from '@/app/ui/main/CardWrapper';
 import { Suspense } from 'react';
 
 export default async function Page({
-  params,
-  searchParams,
+  params: paramsPromise,       // Treat params as a Promise
+  searchParams: searchParamsPromise, // Treat searchParams as a Promise
 }: {
-  params: { category: string };
-  searchParams?: { query?: string };
+  params: Promise<{ category: string }>; // Ensure params is a Promise
+  searchParams?: Promise<{ query?: string }>; // Ensure searchParams is a Promise
 }) {
-  const category = params.category;
+  const params = await paramsPromise; // Await params
+  const searchParams = await searchParamsPromise; // Await searchParams
+
+  const category = params?.category || '';
   const query = searchParams?.query || '';
 
   console.log("Starting fetching process for category: " + category + " and query: " + query);
@@ -20,13 +23,9 @@ export default async function Page({
     CardWrapper = <CategoryCardWrapper category={category} />;
   } else if (query) {
     CardWrapper = <QueryCardWrapper query={query} />;
-  }  else {
+  } else {
     throw new Error('No category or query provided');
   }
-
-  /*if (isError) return <div>failed to load</div>
-  if (isLoading) return <CardWrapperSkeleton />
-  if (!products) return <div>products not found</div>*/
 
   return ( 
     <Suspense fallback={<CardWrapperSkeleton />}>

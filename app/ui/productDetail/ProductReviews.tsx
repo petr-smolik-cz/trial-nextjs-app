@@ -14,7 +14,7 @@ export default function ProductReviews({ reviews }: { reviews: Review[] }) {
                 <div
                     key={index}
                     className="flex flex-col px-4 py-1 min-h-[140px] border border-[var(--color-primary)] rounded-xl backdrop-brightness-[0.96] mb-4"
-                >           
+                > 
                     {/* Header */}
                     <div className="flex flex-row items-center gap-1.5 w-full">
                         <UserCircleIcon className="w-[25px] h-[25px] text-[var(--color-primary)]"/>

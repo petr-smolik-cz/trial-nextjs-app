@@ -4,7 +4,7 @@ import styles from './AddToCartButton.module.css';
 import { ShoppingCartIcon } from '@heroicons/react/20/solid';
 
 export default function AddToCartButton({
-  customStyle,
+  customStyle, // Optional inline style prop
 }: {
   customStyle?: React.CSSProperties;
 }) {
