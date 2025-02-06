@@ -10,31 +10,36 @@ export default function QuantitySelector({
   onQuantityChange: (newQuantity: number) => void;
   classname?: string;
 }) {
+  // Decrease quantity by 1 if greater than 1
   const handleDecrease = () => {
     if (quantity > 1) {
+      console.log(`Decreasing quantity from ${quantity} to ${quantity - 1}`);
       onQuantityChange(quantity - 1);
     }
   };
 
+  // Increase quantity by 1 if less than 999
   const handleIncrease = () => {
     if (quantity < 999) {
+      console.log(`Increasing quantity from ${quantity} to ${quantity + 1}`);
       onQuantityChange(quantity + 1);
     }
   };
 
+  // Handle input change to ensure valid numeric values
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value;
-
-    // Ensure the value respects the min (1) and max (999), and remove leading zeros
     const newValue = rawValue === "" ? 1 : Math.max(1, Math.min(999, Number(rawValue.replace(/^0+/, ""))));
-
-    // Update the parent state
+    
+    console.log(`Quantity input changed: ${rawValue} -> ${newValue}`);
     onQuantityChange(newValue);
   };
 
   return (   
     <div className={`flex flex-col ${classname || ""}`}>
-      <label htmlFor="quantity" className="text-[var(--color-primary)] text-[12px] mb-[1px] font-bold">Quantity</label>
+      <label htmlFor="quantity" className="text-[var(--color-primary)] text-[12px] mb-[1px] font-bold">
+        Quantity
+      </label>
       <div className="flex items-center">
         {/* Decrease Button */}
         <button
@@ -49,10 +54,10 @@ export default function QuantitySelector({
           type="number"
           id="quantity"
           className="w-[46px] h-9 text-center text-lg border-t border-b border-[var(--color-primary)] appearance-none focus:outline-none"
-          value={quantity.toString()} // Always update to the latest number as a string
+          value={quantity.toString()} 
           onChange={handleInputChange}
-          min="1" // Set minimum value to 1
-          max="999" // Set maximum value to 999
+          min="1"
+          max="999"
         />
 
         {/* Increase Button */}
