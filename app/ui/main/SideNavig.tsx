@@ -1,5 +1,5 @@
 "use client";
-import styles from "./sidenavig.module.css";
+import styles from "./SideNavig.module.css";
 import { useProductCategories } from '@/app/lib/clientData';
 import Link from 'next/link';
 import { SideNavigSkeleton } from '@/app/ui/skeletons/mainPageSkeletons';
