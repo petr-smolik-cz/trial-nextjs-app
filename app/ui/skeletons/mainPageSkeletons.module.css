@@ -1,124 +1,153 @@
-/* Skeleton styles */
+
 .skeleton {
-    background-color: #e0e0e0;
-    border-radius: 4px;
-    animation: skeleton-loading 1.3s linear infinite;
-  }
-  
-  @keyframes skeleton-loading {
-    0% {
-      background-color: #bababa;
-    }
-    50% {
-      background-color: #f0f0f0;
-    }
-    100% {
-      background-color: #bababa;
-    }
-  }
-  
-  .product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .product:hover {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-  
-  .productImg {
-    height: 250px; 
-    width: 250px; 
-    border-radius: 5px;
-  }
-  
-  .productInfo {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-  
-  .productName,
-  .productStock,
-  .productPrice {
-    height: 20px;
-    margin: 10px;
-  }
-  
-  .productName {
-    width: 60%;
-    margin: 0 auto 20px auto;
-  }
-  
-  .productStock {
-    width: 20%;
-    margin: 0 auto 10px auto;
-  }
-  
-  .productPrice {
-    width: 20%;
-  }
-  
-  .ratingContainer {
-    display: flex;
-    align-items: center;
-    margin: 15px auto;
-  }
-  
-  .star {
-    width: 24px;
-    height: 24px;
-    margin: 0 2px;
-  }
-  
-  .priceContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: auto 8px 2px 8px;
-  }
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  animation: skeleton-loading 1.3s linear infinite;
+}
 
-  .toShoppingCartButton {
-    width: 140px;
-    font-size: 16px;
-    padding: 11px 10px;
+@keyframes skeleton-loading {
+  0% {
+    background-color: #bababa;
   }
-  
-  .menuList {
-    margin-top: 25px;
+  50% {
+    background-color: #f0f0f0;
   }
+  100% {
+    background-color: #bababa;
+  }
+}
 
-  .link {
-    width: 80%;
-    height: 12px;
-    margin: 12px auto;
-    border-radius: 4px;
-  }
-  
-  /* Border between skeleton items */
-  .borderBetween {
-    position: relative;
-    width: 50%;
-    height: 2px;
-    margin: 0 auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #e0e0e0;
-    border: none;
-  }
-  
-  .menuList li:last-child hr {
-    display: none;
-  }
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 
-  .cartContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-    gap: 5px; /* Gap between product carts */
-  }
+.product:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.productImg {
+  height: 250px; 
+  width: 250px; 
+  border-radius: 5px;
+}
+
+.productInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.productName,
+.productStock,
+.productPrice {
+  height: 20px;
+  margin: 10px;
+}
+
+.productName {
+  width: 60%;
+  margin: 0 auto 20px auto;
+}
+
+.productStock {
+  width: 20%;
+  margin: 0 auto 10px auto;
+}
+
+.productPrice {
+  width: 20%;
+}
+
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  margin: 15px auto;
+}
+
+.star {
+  width: 24px;
+  height: 24px;
+  margin: 0 2px;
+}
+
+.priceContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto 8px 2px 8px;
+}
+
+.toShoppingCartButton {
+  width: 140px;
+  font-size: 16px;
+  padding: 11px 10px;
+}
+
+.menuList {
+  margin-top: 25px;
+}
+
+.link {
+  width: 80%;
+  height: 12px;
+  margin: 12px auto;
+  border-radius: 4px;
+}
+
+/* Border between skeleton items */
+.borderBetween {
+  position: relative;
+  width: 50%;
+  height: 2px;
+  margin: 0 auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #e0e0e0;
+  border: none;
+}
+
+.menuList li:last-child hr {
+  display: none;
+}
+
+.cartContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 5px; /* Gap between product carts */
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  width: 100vw;
+  min-width: 700px;
+}
+
+.logoTitleContainer {
+  margin-left: 15px;
+  width: 170px;
+  height: 60px;
+}
+
+.searchContainer {
+  flex: 1 1 auto;
+  max-width: 700px;
+  height: 40px;
+  margin: 0 50px 0 70px;
+}
+
+.shoppingCartButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: 25px;
+}

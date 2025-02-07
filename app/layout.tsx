@@ -4,6 +4,8 @@ import { openSans } from '@/app/ui/fonts';
 import styles from "./layout.module.css";
 import SideNavig from '@/app/ui/main/SideNavig';
 import Header from '@/app/ui/main/Header1';
+import { Suspense } from 'react';
+import { HeaderSkeleton } from '@/app/ui/skeletons/mainPageSkeletons';
 
 /**
  * Metadata for the application
@@ -39,8 +41,10 @@ export default function RootLayout({
       <body className={`${openSans.className} antialiased`}>
         <div className={styles.container}>
           
-          {/* Main website header */}
-          <Header />
+          <Suspense fallback={<HeaderSkeleton />}>
+            {/* Main website header */}
+            <Header />
+          </Suspense>
 
           {/* Side navigation bar */}
           <SideNavig />
@@ -53,7 +57,6 @@ export default function RootLayout({
           {/* Footer with copyright and credits */}
           <footer className={styles.footer}>
             <p>&copy;&nbsp;2025 YourShop.com | Icons by <a href="https://icons8.com">Icons8</a></p>
-            {/* Future feature: About page */}
             {/* |&nbsp;<a href="/">About</a> */}
           </footer>
         </div>  

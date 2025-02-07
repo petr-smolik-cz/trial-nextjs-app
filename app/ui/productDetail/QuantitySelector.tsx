@@ -1,6 +1,17 @@
 import React from 'react';
 import { MinusIcon, PlusIcon } from '@heroicons/react/16/solid';
 
+/**
+ * QuantitySelector Component
+ * --------------------------
+ * Allows users to increase, decrease, or manually input a quantity value.
+ * - Ensures the quantity remains between 1 and 999.
+ * - Logs changes for debugging purposes.
+ * 
+ * @param {number} quantity - Current quantity value.
+ * @param {(newQuantity: number) => void} onQuantityChange - Function to update the quantity.
+ * @param {string} [classname] - Optional additional class names for styling.
+ */
 export default function QuantitySelector({
   quantity,
   onQuantityChange,
@@ -10,7 +21,9 @@ export default function QuantitySelector({
   onQuantityChange: (newQuantity: number) => void;
   classname?: string;
 }) {
-  // Decrease quantity by 1 if greater than 1
+  /**
+   * Decrease the quantity by 1, ensuring it does not go below 1.
+   */
   const handleDecrease = () => {
     if (quantity > 1) {
       console.log(`Decreasing quantity from ${quantity} to ${quantity - 1}`);
@@ -18,7 +31,9 @@ export default function QuantitySelector({
     }
   };
 
-  // Increase quantity by 1 if less than 999
+  /**
+   * Increase the quantity by 1, ensuring it does not exceed 999.
+   */
   const handleIncrease = () => {
     if (quantity < 999) {
       console.log(`Increasing quantity from ${quantity} to ${quantity + 1}`);
@@ -26,20 +41,28 @@ export default function QuantitySelector({
     }
   };
 
-  // Handle input change to ensure valid numeric values
+  /**
+   * Handles manual input changes.
+   * - Prevents non-numeric values.
+   * - Ensures value stays within the range of 1-999.
+   */
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value;
+
+    // Convert the input to a valid number and ensure it stays between 1 and 999
     const newValue = rawValue === "" ? 1 : Math.max(1, Math.min(999, Number(rawValue.replace(/^0+/, ""))));
-    
+
     console.log(`Quantity input changed: ${rawValue} -> ${newValue}`);
     onQuantityChange(newValue);
   };
 
   return (   
     <div className={`flex flex-col ${classname || ""}`}>
+      {/* Label for accessibility */}
       <label htmlFor="quantity" className="text-[var(--color-primary)] text-[12px] mb-[1px] font-bold">
         Quantity
       </label>
+
       <div className="flex items-center">
         {/* Decrease Button */}
         <button
@@ -49,12 +72,12 @@ export default function QuantitySelector({
           <MinusIcon className="w-5 h-5" />
         </button>
 
-        {/* Input Field */}
+        {/* Input Field for Manual Quantity Entry */}
         <input
           type="number"
           id="quantity"
           className="w-[46px] h-9 text-center text-lg border-t border-b border-[var(--color-primary)] appearance-none focus:outline-none"
-          value={quantity.toString()} 
+          value={quantity.toString()}  // Convert number to string for controlled input
           onChange={handleInputChange}
           min="1"
           max="999"

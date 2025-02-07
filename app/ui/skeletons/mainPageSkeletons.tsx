@@ -48,3 +48,13 @@ export function SideNavigSkeleton() {
       </div>
   );
 }
+
+export function HeaderSkeleton() {
+  return (
+    <header className={styles.header}>
+      <div className={`${styles.logoTitleContainer} ${styles.skeleton}`} />
+      <div className={`${styles.searchContainer} ${styles.skeleton}`} />
+      <div className={`${styles.shoppingCartButton} ${styles.skeleton}`} />
+    </header>
+  );
+}
