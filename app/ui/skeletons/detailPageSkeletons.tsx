@@ -4,7 +4,7 @@ export default function DetaiPageSkeleton() {
   return (
     <div className={styles.container}>
       {/* Top Section: Gallery & Info */}
-      <div style={{ display: "flex", gap: "50px", justifyContent: "center" }}>
+      <div className={styles.galleryInfoContainer}>
         {/* Image Skeleton */}
         <div className={`${styles.skeleton} ${styles.gallery}`} />
 
