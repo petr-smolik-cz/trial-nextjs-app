@@ -5,7 +5,7 @@ import { MinusIcon, PlusIcon } from '@heroicons/react/16/solid';
  * QuantitySelector Component
  * --------------------------
  * Allows users to increase, decrease, or manually input a quantity value.
- * - Ensures the quantity remains between 1 and 999.
+ * - Ensures the quantity remains between 0 and 999.
  * - Logs changes for debugging purposes.
  * 
  * @param {number} quantity - Current quantity value.
@@ -22,10 +22,10 @@ export default function QuantitySelector({
   classname?: string;
 }) {
   /**
-   * Decrease the quantity by 1, ensuring it does not go below 1.
+   * Decrease the quantity by 1, ensuring it does not go below 0.
    */
   const handleDecrease = () => {
-    if (quantity > 1) {
+    if (quantity > 0) {
       console.log(`Decreasing quantity from ${quantity} to ${quantity - 1}`);
       onQuantityChange(quantity - 1);
     }
@@ -44,13 +44,13 @@ export default function QuantitySelector({
   /**
    * Handles manual input changes.
    * - Prevents non-numeric values.
-   * - Ensures value stays within the range of 1-999.
+   * - Ensures value stays within the range of 0-999.
    */
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value;
 
-    // Convert the input to a valid number and ensure it stays between 1 and 999
-    const newValue = rawValue === "" ? 1 : Math.max(1, Math.min(999, Number(rawValue.replace(/^0+/, ""))));
+    // Convert the input to a valid number and ensure it stays between 0 and 999
+    const newValue = rawValue === "" ? 0 : Math.max(0, Math.min(999, Number(rawValue.replace(/^0+/, ""))));
 
     console.log(`Quantity input changed: ${rawValue} -> ${newValue}`);
     onQuantityChange(newValue);
@@ -79,7 +79,7 @@ export default function QuantitySelector({
           className="w-[46px] h-9 text-center text-lg border-t border-b border-[var(--color-primary)] appearance-none focus:outline-none"
           value={quantity.toString()}  // Convert number to string for controlled input
           onChange={handleInputChange}
-          min="1"
+          min="0"
           max="999"
         />
 
